@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_move1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:47:15 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/05 17:58:43 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/05 19:10:07 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int		*swap(int *stack)
 {
@@ -22,7 +24,7 @@ int		*swap(int *stack)
 	if (i >= 2)
 	{
 		temp = stack[0];
-		stack[0] = stack_a[1];
+		stack[0] = stack[1];
 		stack[1] = temp;
 	}
 	return (stack);
@@ -35,18 +37,18 @@ void	push_a(int **stack_a, int **stack_b)
 
 	ia = 0;
 	ib = 0;
-	while (&stack_a[ia])
+	while (stack_a[ia])
 		ia++;
-	while (&stack_b[ib])
+	while (stack_b[ib])
 		ib++;
 	if (ib >= 1)
 	{
 		while (ia > 0)
 		{
-			&stack_a[ia + 1] = &stack_a[ia];
+			stack_a[ia + 1] = stack_a[ia];
 			ia--;
 		}
-		&stack_a[0] = &stack_b[0];
+		stack_a[0] = stack_b[0];
 	}
 }
 
@@ -57,18 +59,18 @@ void	push_b(int **stack_a, int **stack_b)
 
 	ia = 0;
 	ib = 0;
-	while (&stack_a[ia])
+	while (stack_a[ia])
 		ia++;
-	while (&stack_b[ib])
+	while (stack_b[ib])
 		ib++;
 	if (ia >= 1)
 	{
 		while (ib > 0)
 		{
-			&stack_b[ib + 1] = &stack_b[ib];
+			stack_b[ib + 1] = stack_b[ib];
 			ib--;
 		}
-		&stack_b[0] = &stack_a[0];
+		stack_b[0] = stack_a[0];
 	}
 }
 
