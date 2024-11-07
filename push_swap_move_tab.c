@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_move1.c                                  :+:      :+:    :+:   */
+/*   push_swap_move_tab.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:47:15 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/05 19:10:07 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/07 21:09:49 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+//Les fonctions faites avec un double tableau
+
+/* #include "push_swap.h"
 
 int		*swap(int *stack)
 {
@@ -108,4 +110,4 @@ int		*reverse_rotate(int *stack)
 	}
 	stack[i] = temp;
 	return (stack);
-}
+} */
