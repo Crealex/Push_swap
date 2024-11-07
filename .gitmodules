@@ -1,3 +1,3 @@
 [submodule "libft"]
 	path = libft
-	url = git@github.com:Crealex/libft.git
+	url = https://github.com/Crealex/libft.git
