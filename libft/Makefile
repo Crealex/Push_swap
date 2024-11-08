@@ -1,3 +1,4 @@
+# Sources
 SRCS 	=	ft_atoi.c ft_bzero.c ft_calloc.c \
 			ft_isalnum.c ft_isalpha.c ft_isascii.c \
 			ft_isdigit.c ft_isprint.c ft_itoa.c \
@@ -19,35 +20,66 @@ SRCSB	=	ft_lstadd_back.c ft_lstadd_front.c \
 PRINTF	=	ft_printf_print.c print_arg1.c \
 			print_arg2.c
 
+# Objects and directories
 OBJS	= ${SRCS:%.c=${OBJDIR}/%.o}
-OBJSB	=  ${SRCSB:%.c=${OBJDIR}/%.o}
+OBJSB	= ${SRCSB:%.c=${OBJDIR}/%.o}
 OBJDIR	= objets
+
+# Compiler and flags
 CFLAGS	= -Wall -Werror -Wextra
 CC		= gcc
 NAME	= libft.a
 AR		= ar rcs
 
+# Colors and style
+END		:= \033[0m
+BOLD	:= \033[1m
+GREEN	:= \033[32m
+BLUE	:= \033[34m
+CYAN	:= \033[36m
+PURPLE	:= \033[35m
+YELLOW	:= \033[33m
+
+# Progress counter
+TOTAL_FILES := $(words $(SRCS) + words $(SRCSB))
+TOTAL_BONUS := $(words $(SRCSB))
+CURRENT_FILE = 0
+
 all: ${NAME}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJDIR} ${OBJS}
+	@echo "${BOLD}${BLUE}📚 Creating library archive...${END}"
 	@${AR} ${NAME} ${OBJS}
+	@echo "${BOLD}${GREEN}✨ Library ${NAME} created successfully${END}"
+	@echo "${BOLD}${CYAN}📊 Compiled ${TOTAL_FILES} files${END}"
 
-${OBJDIR}/%.o: %.c | ${OBJDIR}
-	@echo "\033[1m\033[38;5;55m  COMPILING..."
+${OBJDIR}/%.o: %.c
+	@$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE)+1))))
+	@printf "${BOLD}${PURPLE}⚡ [%2d/%2d] Compiling: %-20s ${END}" $(CURRENT_FILE) $(TOTAL_FILES) "$<"
 	@${CC} ${CFLAGS} -c -o $@ $<
+	@echo "${BOLD}${GREEN}✓${END}"
 
 ${OBJDIR}:
 	@mkdir -p ${OBJDIR}
+	@echo "${BOLD}${BLUE}📁 Created objects directory${END}"
 
 clean:
+	@echo "${BOLD}${YELLOW}🧹 Cleaning objects...${END}"
 	@rm -rf ${OBJDIR}
+	@echo "${BOLD}${GREEN}✓ Clean complete${END}"
 
 fclean:	clean
+	@echo "${BOLD}${YELLOW}🗑️  Removing library...${END}"
 	@rm -f ${NAME}
+	@echo "${BOLD}${GREEN}✨ All clean ✨${END}"
 
 re:	fclean all
 
-bonus: ${OBJSB} ${OBJS}
+bonus: ${OBJDIR} ${OBJS} ${OBJSB}
+	@$(eval TOTAL_FILES=$(shell echo $$(($(TOTAL_FILES)+$(TOTAL_BONUS)))))
+	@echo "${BOLD}${BLUE}🎲 Building with bonus...${END}"
 	@${AR} ${NAME} ${OBJSB} ${OBJS}
+	@echo "${BOLD}${GREEN}✨ Bonus features added successfully${END}"
+	@echo "${BOLD}${CYAN}📊 Total files compiled: ${TOTAL_FILES}${END}"
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
