@@ -12,7 +12,7 @@ ${NAME}:	${OBJS} ${LIBFT}
 	${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
 
 ${LIBFT}:
-	${MAKE} -C libft
+	${MAKE} -C ./libft/ bonus
 
 ${OBJDIR}/%.o: %.c | ${OBJDIR}
 	${CC} ${CFLAGS} -c -o $@ $<
@@ -22,9 +22,11 @@ ${OBJDIR}:
 
 clean:
 	rm -rf ${OBJDIR}
+	${MAKE} -C ./libft/ clean
 
 fclean: clean
 	rm -f ${NAME}
+	${MAKE} -C ./libft/ fclean
 
 re: fclean all
 

@@ -6,15 +6,15 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 19:10:42 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/08 11:15:00 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/08 13:37:36 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*swap(t_stack *stack)
+t_list	*swap(t_list *stack)
 {
-	t_stack	*temp;
+	t_list	*temp;
 
 	if (stack->content && stack->next)
 	{
@@ -25,9 +25,9 @@ t_stack	*swap(t_stack *stack)
 	return (stack);
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+void	push_a(t_list **stack_a, t_list **stack_b)
 {
-	t_stack	*temp;
+	t_list	*temp;
 
 	temp = *stack_a;
 	if (*stack_b)
@@ -39,9 +39,9 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	return ;
 }
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
+void	push_b(t_list **stack_a, t_list **stack_b)
 {
-	t_stack	*temp;
+	t_list	*temp;
 
 	temp = *stack_b;
 	if (*stack_a)
@@ -53,10 +53,10 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	return ;
 }
 
-t_stack	*rotate(t_stack *stack)
+t_list	*rotate(t_list *stack)
 {
-	t_stack	*temp;
-	t_stack	*new_head;
+	t_list	*temp;
+	t_list	*new_head;
 
 	if (!stack || !stack->next)
 		return (stack);
@@ -71,11 +71,11 @@ t_stack	*rotate(t_stack *stack)
 	return (new_head);
 }
 
-t_stack	*reverse_rotate(t_stack *stack)
+t_list	*reverse_rotate(t_list *stack)
 {
-	t_stack	*new_second;
-	t_stack	*new_last;
-	t_stack	*new_head;
+	t_list	*new_second;
+	t_list	*new_last;
+	t_list	*new_head;
 
 	new_second = stack;
 	while (stack->next->next)
