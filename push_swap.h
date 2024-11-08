@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/07 21:12:48 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/08 11:15:31 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h> // Pour faire des tests
-
-t_list	*swap(t_list *stack);
-void	push_a(t_list **stack_a, t_list **stack_b);
-void	push_b(t_list **stack_a, t_list **stack_b);
-t_list	*rotate(t_list *stack);
-t_list	*reverse_rotate(t_list *stack);
+#include "libft/libft.h"
+typedef struct s_stack
+{
+	int				content;
+	struct s_stack	*next;
+}	t_stack;
+t_stack	*swap(t_stack *stack);
+void	push_a(t_stack **stack_a, t_stack **stack_b);
+void	push_b(t_stack **stack_a, t_stack **stack_b);
+t_stack	*rotate(t_stack *stack);
+t_stack	*reverse_rotate(t_stack *stack);
 
 #endif

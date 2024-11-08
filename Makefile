@@ -1,14 +1,18 @@
 NAME	=	push_swap
-LIBFT	=	libft.a
+LIBFT	=	libft/libft.a
 SRCS	=	push_swap_move_chained.c main.c
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 CC		=	gcc
 CFLAGS	=	-Werror -Wextra -Wall
 OBJDIR	=	objets
 
-all:	${NAME} ${LIBFT}
+all:	${NAME}
 
-#ajouter regles NAME et LIBFT
+${NAME}:	${OBJS} ${LIBFT}
+	${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
+
+${LIBFT}:
+	${MAKE} -C libft
 
 ${OBJDIR}/%.o: %.c | ${OBJDIR}
 	${CC} ${CFLAGS} -c -o $@ $<
@@ -22,6 +26,6 @@ clean:
 fclean: clean
 	rm -f ${NAME}
 
-re: fclean re
+re: fclean all
 
 .PHONY: all clean fclean re
