@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/08 16:08:13 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/08 18:48:59 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(int argc, char **argv)
 	int content;
 	t_stack *stack_a;
 	t_stack *stack_a_temp;
-	t_stack *head_a;
 	t_stack *stack_b;
 
 		if (argc < 2)
@@ -30,7 +29,6 @@ int main(int argc, char **argv)
 	content = ft_atoi(argv[i++]);
 	stack_a = ft_lstnew_pimp(content);
 	stack_b = malloc(sizeof(t_stack) * argc);
-	head_a = stack_a;
 	while(i < argc)
 	{
 		content = ft_atoi(argv[i]);

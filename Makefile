@@ -19,22 +19,25 @@ ${NAME}:	${OBJS} ${LIBFT}
 	@${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
 
 ${LIBFT}:
-	@echo "\033[1mBuilding the project..."${END}
-	${MAKE} -C ./libft/ bonus
+	@echo "\033[1mLIBFT COMPILING..."${END}
+	@${MAKE} -C ./libft/ bonus
 
 ${OBJDIR}/%.o: %.c | ${OBJDIR}
-	${CC} ${CFLAGS} -c -o $@ $<
+	@echo ${BOLD} ${L_PURPLE} COMPILING...${END}
+	@${CC} ${CFLAGS} -c -o $@ $<
 
 ${OBJDIR}:
-	mkdir -p ${OBJDIR}
+	@mkdir -p ${OBJDIR}
 
 clean:
-	rm -rf ${OBJDIR}
-	${MAKE} -C ./libft/ clean
+	@echo ${BOLD} CLEANING....
+	@rm -rf ${OBJDIR}
+	@${MAKE} -C ./libft/ clean
 
 fclean: clean
-	rm -f ${NAME}
-	${MAKE} -C ./libft/ fclean
+	@rm -f ${NAME}
+	@${MAKE} -C ./libft/ fclean
+	@echo ${BOLD}${GREEN}✨ALL CLEAN✨
 
 re: fclean all
 

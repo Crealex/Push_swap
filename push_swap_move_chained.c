@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_move_chained.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 19:10:42 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/08 16:21:58 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/08 18:48:16 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp;
 
 	temp = (*stack_a)->next;
-	(*stack_b)->content = (int)malloc(sizeof(int));
 	if (*stack_b)
 	{
 		(*stack_a)->content = (*stack_b)->content;
