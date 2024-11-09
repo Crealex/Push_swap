@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/08 22:30:52 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/09 15:35:33 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf(YELLOW BOLD"FONCTION ROTATE (sur stack_a)\n"END);
 	stack_a = rotate(stack_a);
 	read_stack(stack_a, stack_b);
-
-
-
+	ft_printf(YELLOW BOLD"FONCTION REVERSE ROTATE (sur stack_a)\n"END);
+	stack_a = reverse_rotate(stack_a);
+	read_stack(stack_a, stack_b);
 }

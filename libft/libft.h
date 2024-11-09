@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 23:25:47 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/07 19:10:46 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/09 15:29:36 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h> // Pour faire des tests
 # include "ft_printf.h"
+# include "get_next_line_bonus.h"
 
 typedef struct s_list
 {
