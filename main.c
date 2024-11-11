@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/08 21:28:56 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/11 21:05:48 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	i = 1;
+	// parsing
 	content = ft_atoi(argv[i++]);
 	stack_a = ft_lstnew_pimp(content);
 	stack_b = malloc(sizeof(t_stack) * argc);

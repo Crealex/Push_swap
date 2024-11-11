@@ -3,27 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/11 17:57:48 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/11 21:24:08 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	first_phase(t_stack *stack_a, t_stack *stack_b)
+void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provisoire
 {
 	//premiere etape :
 	push_b(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	if (stack_a->content > stack_b->content)
-	{
-		if (stack_b->content > stack_b->next->content)
-			push_b(stack_a, stack_b);
-	}
 
-	// insertion d'un nombreau bonne endroit de la satck_b
+	// insertion d'un nombre au bonne endroit de la satck_b
 	while (1)
 	{
 		if (stack_a->content < stack_b->content && stack_a->content > stack_b->next->content)
@@ -34,4 +29,12 @@ void	first_phase(t_stack *stack_a, t_stack *stack_b)
 		}
 		stack_b = rotate(stack_b);
 	}
+	// renvoie dans la stack_a
+	while (stack_b)
+	{
+		push_a(stack_a, stack_b);
+		stack_b = stack_b->next;
+	}
+	stack_b = goto_head(stack_b);
+
 }
