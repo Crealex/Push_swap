@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_tester.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/09 15:35:33 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/11 18:26:50 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	read_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack *prev_a;
 	t_stack *prev_b;
+	int len_a;
 
+	len_a = len_stack(stack_a);
 	ft_printf(CYAN"\n----------------\n");
 	ft_printf(BOLD"PILE A:\n"END CYAN);
 	while (stack_a->next)
@@ -32,6 +34,7 @@ void	read_stack(t_stack *stack_a, t_stack *stack_b)
 	{
 		stack_a = stack_a->prev;
 	}
+	ft_printf("la stack_a contient %d chiffre(s)\n", len_a);
 	// -------------PILE B------------------
 	ft_printf(BOLD"PILE B:\n"END CYAN);
 	while (stack_b->next)
