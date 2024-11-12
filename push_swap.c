@@ -29,7 +29,7 @@ void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provi
 	insert_in_b(&stack_a, &stack_b);
 	ft_printf("pendant l'algo :\n");
 	read_stack(stack_a, stack_b);
-	// renvoie dans la stack_a
+	// renvoi: dans la stack_a
 	while (stack_b)
 	{
 		push_a(&stack_a, &stack_b);
@@ -91,7 +91,6 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 	int max_num;
 	int min_num;
 
-	ft_printf("test\n");
 	if ((*stack_a)->content > (*stack_a)->next->content)
 	{
 		max_num = (*stack_a)->content;
@@ -102,7 +101,8 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 		max_num = (*stack_a)->next->content;
 		min_num = (*stack_a)->content;
 	}
-	if ((*stack_a)->content > max_num)
+	ft_printf("test\n");
+	if ((*stack_a)->content > max_num) 
 	{
 		max_num = (*stack_a)->content;
 		insert_max(stack_a, stack_b);
