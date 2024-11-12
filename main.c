@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/11 21:05:48 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/12 11:49:18 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int main(int argc, char **argv)
 		ft_lstadd_back_pimp(&stack_a, stack_a_temp);
 		i++;
 	}
-	move_teser(stack_a, stack_b);
-
+	//move_teser(stack_a, stack_b);
+	first_phase(stack_a, stack_b);
 }

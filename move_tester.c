@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/11 18:26:50 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/12 15:40:04 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	read_stack(t_stack *stack_a, t_stack *stack_b)
 	t_stack *prev_a;
 	t_stack *prev_b;
 	int len_a;
-
-	len_a = len_stack(stack_a);
+	len_a = len_stack(stack_a); // !!!!!! Creer un probleme de segfault!!!!!!!
 	ft_printf(CYAN"\n----------------\n");
 	ft_printf(BOLD"PILE A:\n"END CYAN);
 	while (stack_a->next)

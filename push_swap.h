@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/11 21:12:48 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/12 10:30:19 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ t_stack	*reverse_rotate(t_stack *stack);
 t_stack	*ft_lstnew_pimp(int content);
 void	ft_lstadd_back_pimp(t_stack **lst, t_stack *new);
 void	move_teser(t_stack *stack_a, t_stack *stack_b); // test des moves et du parsing
+void	read_stack(t_stack *stack_a, t_stack *stack_b); // Impresssion des stack
 int		len_stack(t_stack *stack); // calcule de la longeur de la liste
 t_stack	*goto_head(t_stack *stack); //retour au premier element de la liste
+void	first_phase(t_stack *stack_a, t_stack *stack_b);
 
 #endif
