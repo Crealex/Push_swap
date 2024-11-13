@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/13 18:06:39 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/13 21:58:56 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b);
 
 void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provisoire
 {
+	t_stack *temp_a;
 	//premiere etape :
 	ft_printf(YELLOW "AVANT TOUTE MANIP\n");
 	read_stack(stack_a, stack_b);
+	temp_a = stack_a;
 	push_b(&stack_a, &stack_b);
 	push_b(&stack_a, &stack_b);
 	read_stack(stack_a, stack_b);
 
 	// insertion d'un nombre au bonne endroit de la satck_b
-	while (stack_a)
+	while (temp_a)
 	{
 		ft_printf("avant l'algo :\n");
 		read_stack(stack_a, stack_b);
@@ -34,6 +36,7 @@ void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provi
 		insert_in_b(&stack_a, &stack_b);
 		ft_printf("pendant l'algo :\n");
 		read_stack(stack_a, stack_b);
+		temp_a = temp_a->next;
 	}
 	// renvoi: dans la stack_a
 	while (stack_b)
@@ -78,9 +81,14 @@ void	insert_min(t_stack **stack_a, t_stack **stack_b)
 
 void	insert_middle(t_stack **stack_a, t_stack **stack_b)
 {
-	while (*stack_a)
+	t_stack *temp_a;
+
+	temp_a = *stack_a;
+	temp_a->next = (*stack_a)->next;
+	// IMPOSSIBLE DE DEPLACER CE PUTAIN DE TEMP_A
+	while (temp_a)
 	{
-		if ((*stack_a)->content < (*stack_b)->content && (*stack_a)->content > (*stack_b)->next->content)
+		if (temp_a->content < (*stack_b)->content && temp_a->content > (*stack_b)->next->content)
 		{
 			rotate(stack_b);
 			read_stack(*stack_a, *stack_b);
@@ -90,9 +98,10 @@ void	insert_middle(t_stack **stack_a, t_stack **stack_b)
 		{
 			rotate(stack_b);
 		}
-		*stack_a = (*stack_a)->next;
-		read_stack(*stack_a, *stack_b);
+		temp_a = temp_a->next;
+		ft_printf("current a : %d\n", (*stack_a)->content);
 		ft_printf("boucle dans middles\n");
+		read_stack(*stack_a, *stack_b);
 	}
 }
 
@@ -116,12 +125,15 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 	{
 		max_num = (*stack_a)->content;
 		insert_max(stack_a, stack_b);
+		ft_printf("MAXXXX\n");
 	}
 	else if ((*stack_a)->content < min_num)
 	{
 		min_num = (*stack_a)->content;
 		insert_min(stack_a, stack_b);
+		ft_printf("MINNNNN\n");
 	}
 	else
 		insert_middle(stack_a, stack_b);
+	ft_printf("MIDDDDDDD:E and max num : %d\n", max_num);
 }
