@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:17 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/11 21:11:33 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/13 11:16:10 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int		len_stack(t_stack *stack)
 	int i;
 
 	i = 0;
+	while (stack->prev)
+	{
+		stack = stack->prev;
+	}
 	while (stack->next)
 	{
 		i++;

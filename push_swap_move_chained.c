@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_move_chained.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/08 22:14:03 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/13 18:02:39 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,35 +53,42 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 
 	if (!*stack_a)
 		return ;
+	if ((*stack_b)->content == '\0')
+	{
+		(*stack_b)->content = (*stack_a)->content;
+		*stack_a = (*stack_a)->next;
+		(*stack_a)->prev = NULL;
+		return ;
+	}
 	temp = *stack_b;
 	*stack_b = *stack_a;
 	*stack_a = (*stack_a)->next;
-	if (*stack_a)
-		(*stack_a)->prev = NULL;
+	(*stack_a)->prev = NULL;
 	(*stack_b)->next = temp;
 	(*stack_b)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_b;
 }
 
-t_stack	*rotate(t_stack *stack)
+void	rotate(t_stack **stack)
 {
 	t_stack	*old_first;
 	t_stack	*new_first;
 	t_stack	*last;
 
-	if (!stack || !stack->next)
-		return (stack);
-	old_first = stack;
-	new_first = stack->next;
-	last = stack;
+	if (!*stack || !(*stack)->next)
+		return ;
+	old_first = *stack;
+	new_first = (*stack)->next;
+	last = *stack;
 	while (last->next)
 		last = last->next;
 	new_first->prev = NULL;
 	old_first->prev = last;
 	old_first->next = NULL;
 	last->next = old_first;
-	return (new_first);
+	*stack = new_first;
+	return ;
 }
 
 t_stack	*reverse_rotate(t_stack *stack)

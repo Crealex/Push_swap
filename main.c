@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/12 11:49:18 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/13 17:37:40 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 	t_stack *stack_a_temp;
 	t_stack *stack_b;
 
+	stack_b = NULL;
 		if (argc < 2)
 	{
 		ft_printf("\033[0;31mErreur, pas assez d'arguments\n");
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
 	// parsing
 	content = ft_atoi(argv[i++]);
 	stack_a = ft_lstnew_pimp(content);
-	stack_b = malloc(sizeof(t_stack) * argc);
+	stack_b = calloc(sizeof(t_stack), 1);
 	while(i < argc)
 	{
 		content = ft_atoi(argv[i]);
