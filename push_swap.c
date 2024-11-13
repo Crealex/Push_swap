@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/13 17:49:11 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/13 18:06:39 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	insert_middle(t_stack **stack_a, t_stack **stack_b)
 		}
 		*stack_a = (*stack_a)->next;
 		read_stack(*stack_a, *stack_b);
-		ft_printf("boucle dans middle\n");
+		ft_printf("boucle dans middles\n");
 	}
 }
 
