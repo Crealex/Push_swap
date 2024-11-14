@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/13 18:02:39 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/14 10:27:29 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 
 	if (!*stack_b)
 		return ;
+	if ((*stack_a)->content == '\0')
+	{
+		(*stack_a)->content = (*stack_b)->content;
+		*stack_b = (*stack_b)->next;
+		(*stack_b)->prev = NULL;
+		return ;
+	}
 	temp = *stack_a;
 	*stack_a = *stack_b;
 	*stack_b = (*stack_b)->next;

@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/13 17:48:23 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/14 15:20:28 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define END "\033[0m"
 # define YELLOW "\033[0;33m"
 # define CYAN "\033[0;36m"
+# define RED "\033[0;31m"
 # define INT_MIN -2147483648
 
 # include <unistd.h>
@@ -29,6 +30,7 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
+t_stack	*parsing(int argc, char **argv);
 t_stack	*swap(t_stack *stack);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
