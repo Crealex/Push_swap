@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/14 15:20:28 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/14 16:40:00 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define CYAN "\033[0;36m"
 # define RED "\033[0;31m"
 # define INT_MIN -2147483648
+# define INT_MAX 2147483647
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -31,6 +32,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 t_stack	*parsing(int argc, char **argv);
+int		checker(int argc, char **argv);
 t_stack	*swap(t_stack *stack);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
