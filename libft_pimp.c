@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_pimp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:50:57 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/14 17:06:28 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/15 11:39:01 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	ft_lstadd_back_pimp(t_stack **lst, t_stack *new)
 		temp = temp->next;
 	}
 	temp->next = new;
-	ft_printf(YELLOW"testouille\n"END);
 	new->prev = temp;
 }
 

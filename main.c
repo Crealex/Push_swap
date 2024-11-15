@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/14 17:20:26 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/15 13:47:58 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int main(int argc, char **argv)
 	if (!stack_a)
 	{
 		ft_printf(RED"Erreur, arguments invalide\n"END);
+		free(stack_a);
+		free(stack_b);
 		return (1);
 	}
 	read_stack(stack_a, stack_b);

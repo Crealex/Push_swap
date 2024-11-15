@@ -3,16 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:16:58 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/14 17:20:11 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/15 15:10:11 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	put_in_stack(t_stack **stack, char **res)
+
+int		duplicate_checker(t_stack *stack, int content)
+{
+	while (stack)
+	{
+		if (stack->content == content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int		put_in_stack(t_stack **stack, char **res)
 {
 	int i;
 	int content;
@@ -22,11 +34,13 @@ void	put_in_stack(t_stack **stack, char **res)
 	while (res[i])
 	{
 		content = ft_atoi(res[i]);
+		if (!duplicate_checker(*stack, content))
+			return (0);
 		temp_a = ft_lstnew_pimp(content);
-		ft_printf(YELLOW"TEST\n"END);
 		ft_lstadd_back_pimp(stack, temp_a);
 		i++;
 	}
+	return (1);
 }
 
 t_stack	*parsing(int argc, char **argv)
@@ -36,6 +50,7 @@ t_stack	*parsing(int argc, char **argv)
 	t_stack *stack_a;
 
 	stack_a = NULL;
+	//Check nombre valide
 	if (!checker(argc, argv))
 	{
 		return (NULL);
@@ -45,7 +60,9 @@ t_stack	*parsing(int argc, char **argv)
 	while (i < argc)
 	{
 		res = ft_split(argv[i], ' ');
-		put_in_stack(&stack_a, res);
+		if (!put_in_stack(&stack_a, res))
+			return (NULL);
+		free(res);
 		i++;
 	}
 	return (stack_a);
