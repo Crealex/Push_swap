@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:17 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 16:48:03 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:01:50 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,21 @@ t_stack	*goto_head(t_stack *stack)
 	}
 	return (stack);
 }
-
 void	goto_biggest(t_stack **stack)
 {
-	int	biggest_temp;
+	int		biggest_temp;
+	t_stack	*temp;
 
-	biggest_temp = 0;
-	while (*stack)
+	biggest_temp = (*stack)->content;
+	temp = *stack;
+	while (temp)
 	{
-		if ((*stack)->content > biggest_temp)
-			biggest_temp = (*stack)->content;
-		*stack = (*stack)->next;
+		if (temp->content > biggest_temp)
+			biggest_temp = temp->content;
+		temp = temp->next;
 	}
-	*stack = goto_head(*stack);
-	while (*stack)
-	{
-		if ((*stack)->content == biggest_temp)
-			return;
-		*stack = (*stack)->next;
-	}
-	return ;
+	while ((*stack)->content != biggest_temp)
+		rotate(stack);
 }
 
 int		is_sorted(t_stack *stack)

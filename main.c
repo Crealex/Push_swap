@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 16:47:14 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/15 23:04:52 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	read_stack(stack_a, stack_b);
-	goto_biggest(&stack_a);
+	dirty_algo(&stack_a, &stack_b);
 	read_stack(stack_a, stack_b);
 }
