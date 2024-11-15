@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/14 16:40:00 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/15 16:46:41 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b); // test des moves et du par
 void	read_stack(t_stack *stack_a, t_stack *stack_b); // Impresssion des stack
 int		len_stack(t_stack *stack); // calcule de la longeur de la liste
 t_stack	*goto_head(t_stack *stack); //retour au premier element de la liste
+int		is_sorted(t_stack *stack);
+void	goto_biggest(t_stack **stack);
 void	first_phase(t_stack *stack_a, t_stack *stack_b);
 
 #endif

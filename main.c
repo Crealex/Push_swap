@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 13:47:58 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/15 16:47:14 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc < 2)
 	{
-		ft_printf(RED"Erreur, pas assez d'arguments\n"END);
 		return (1);
 	}
 	stack_b = calloc(sizeof(t_stack), 1);
@@ -33,5 +32,7 @@ int main(int argc, char **argv)
 		free(stack_b);
 		return (1);
 	}
+	read_stack(stack_a, stack_b);
+	goto_biggest(&stack_a);
 	read_stack(stack_a, stack_b);
 }
