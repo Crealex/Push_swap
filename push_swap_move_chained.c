@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/17 17:10:27 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/17 21:37:42 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ t_stack	*swap(t_stack *stack)
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
-    t_stack	*temp;
+	t_stack	*temp;
 
 	if (!*stack_b)
 		return ;
-	if ((*stack_a)->content == '\0' || !*stack_a)
+	if (!*stack_a)
 	{
+		*stack_a = malloc(sizeof(t_list) * 1);
 		(*stack_a)->content = (*stack_b)->content;
 		*stack_b = (*stack_b)->next;
 		(*stack_b)->prev = NULL;
@@ -60,8 +61,9 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 
 	if (!*stack_a)
 		return ;
-	if ((*stack_b)->content == '\0')
+	if (!*stack_b)
 	{
+		*stack_b = malloc(sizeof(t_list) * 1);
 		(*stack_b)->content = (*stack_a)->content;
 		*stack_a = (*stack_a)->next;
 		(*stack_a)->prev = NULL;
@@ -70,7 +72,8 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	temp = *stack_b;
 	*stack_b = *stack_a;
 	*stack_a = (*stack_a)->next;
-	(*stack_a)->prev = NULL;
+	if (*stack_a)
+		(*stack_a)->prev = NULL;
 	(*stack_b)->next = temp;
 	(*stack_b)->prev = NULL;
 	if (temp)

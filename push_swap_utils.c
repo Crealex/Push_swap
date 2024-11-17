@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:17 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/17 16:52:31 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/17 21:16:35 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ int		len_stack(t_stack *stack)
 	int i;
 
 	i = 0;
-	while (stack->prev)
+	if (stack)
 	{
-		stack = stack->prev;
-	}
-	while (stack->next)
-	{
+		while (stack->prev)
+		{
+			stack = stack->prev;
+		}
+		while (stack->next)
+		{
+			i++;
+			stack = stack->next;
+		}
 		i++;
-		stack = stack->next;
 	}
-	i++;
 	return (i);
 }
 

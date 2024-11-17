@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:53:10 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/17 17:19:38 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/17 21:46:15 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 	if ((*stack_a)->content > (*stack_b)->content)
 	{
 		goto_biggest(stack_b);
-		push_b(stack_a, stack_b); // LE PROBLEME VIENT PEUT-ETRE DE LÀ
+		push_b(stack_a, stack_b);
 		printf(RED"test\n"END);
 	}
 	else
@@ -45,27 +45,32 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 
 void	dirty_algo(t_stack **stack_a, t_stack **stack_b)
 {
-	//t_stack	*temp_a;
+	t_stack	*temp_a;
 	t_stack	*temp_b;
 
 	if (is_sorted(*stack_a))
 		return ;
-	//temp_a = *stack_a;
-	temp_b = *stack_b;
+	temp_a = *stack_a;
 	push_b(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	while (*stack_a)
+	while (temp_a)
 	{
 		insert_in_b(stack_a, stack_b);
-		//temp_a = *stack_a; // pas sur du truc
-		//temp_a = temp_a->next;
+		temp_a = *stack_a; // pas sur du truc
+		temp_a = temp_a->next;
 	}
+	insert_in_b(stack_a, stack_b);
 	// renvoi dans la stack_a
+	read_stack(*stack_a, *stack_b);
+	temp_b = *stack_b;
 	while (temp_b)
 	{
 		push_a(stack_a, stack_b);
+		if (*stack_b)
+			temp_b = *stack_b;
 		temp_b = temp_b->next;
 	}
+	push_a(stack_a, stack_b);
 	//push_a(stack_a, stack_b);
 	return ;
 }

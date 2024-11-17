@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/17 17:25:04 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/17 21:32:16 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,47 @@
 void	read_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int len_a;
-	while (stack_a->prev)
+	if (stack_a)
 	{
-		stack_a = stack_a->prev;
+		while (stack_a->prev)
+		{
+			stack_a = stack_a->prev;
+		}
 	}
 	len_a = len_stack(stack_a);
 	ft_printf(CYAN"\n----------------\n");
 	ft_printf(BOLD"PILE A:\n"END CYAN);
-	while (stack_a->next)
+	if (stack_a)
 	{
+		while (stack_a->next)
+		{
+			ft_printf("  %d\n", stack_a->content);
+			stack_a = stack_a->next;
+		}
 		ft_printf("  %d\n", stack_a->content);
-		stack_a = stack_a->next;
 	}
-	ft_printf("  %d\n", stack_a->content);
 	//retour au debut
-	while(stack_a->prev)
+	/* while(stack_a->prev)
 	{
 		stack_a = stack_a->prev;
-	}
+	} */
 	ft_printf("la stack_a contient %d chiffre(s)\n", len_a);
 	// -------------PILE B------------------
 	ft_printf(BOLD"PILE B:\n"END CYAN);
-	while (stack_b->next)
+	if (stack_b)
 	{
+		while (stack_b->next)
+		{
+			ft_printf("  %d\n", stack_b->content);
+			stack_b = stack_b->next;
+		}
 		ft_printf("  %d\n", stack_b->content);
-		stack_b = stack_b->next;
 	}
-	ft_printf("  %d\n", stack_b->content);
 	//retour au debut
-	while(stack_b->prev)
+	/* while(stack_b->prev)
 	{
 		stack_b = stack_b->prev;
-	}
+	} */
 	ft_printf("----------------\n\n"END);
 }
 
@@ -62,8 +71,8 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("test du mouvement swap 2eme num : %d\n", stack_a->next->content);
 	read_stack(stack_a, stack_b);
 	ft_printf(YELLOW BOLD"FONCTION PUSH_B\n"END);
-	ft_printf("1er satck a : %d\n", stack_a->content);
-	ft_printf("1er satck b : %d\n", stack_b->content);
+	//ft_printf("1er satck a : %d\n", stack_a->content);
+	//ft_printf("1er satck b : %d\n", stack_b->content);
 	push_b(&stack_a, &stack_b);
 	ft_printf("1er satck a : %d\n", stack_a->content);
 	ft_printf("1er satck b : %d\n", stack_b->content);
