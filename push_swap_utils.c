@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:17 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 23:01:50 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/17 16:52:31 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ void	goto_biggest(t_stack **stack)
 
 int		is_sorted(t_stack *stack)
 {
-	while (stack)
+	t_stack *temp;
+
+	temp = stack;
+	while (temp->next)
 	{
-		if (stack->content < stack->next->content)
-			stack = stack->next;
+		if (temp->content < temp->next->content)
+			temp = temp->next;
 		else
 			return (0);
 	}

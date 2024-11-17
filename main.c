@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 23:04:52 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/17 17:22:00 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	read_stack(stack_a, stack_b);
-	dirty_algo(&stack_a, &stack_b);
-	read_stack(stack_a, stack_b);
+	move_teser(stack_a, stack_b);
+	//dirty_algo(&stack_a, &stack_b);
+	//read_stack(stack_a, stack_b);
 }

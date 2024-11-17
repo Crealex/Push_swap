@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_tester.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/13 17:49:35 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/17 17:25:04 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,13 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("1er satck a : %d\n", stack_a->content);
 	ft_printf("1er satck b : %d\n", stack_b->content);
 	read_stack(stack_a, stack_b);
-	ft_printf("(2x push_b de plus pour avoir des trucs dans les deux stack)");
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
+	ft_printf("test de push un max : ");
+	while(stack_a)
+	{
+		push_b(&stack_a, &stack_b);
+		read_stack(stack_a, stack_b);
+	}
+	//push_b(&stack_a, &stack_b);
 	read_stack(stack_a, stack_b);
 	ft_printf(YELLOW BOLD"FONCTION PUSH_A\n"END);
 	push_a(&stack_a, &stack_b);
