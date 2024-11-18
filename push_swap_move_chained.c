@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_move_chained.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/18 17:45:37 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/18 22:14:12 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*swap(t_stack *stack)
+t_stack	*swap(t_stack *stack, char c)
 {
 	t_stack	*first;
 	t_stack	*second;
-
+	print_move(c, 's');
 	if (!stack || !stack->next)
 		return (stack);
 	first = stack;
@@ -54,7 +54,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	(*stack_a)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_a;
-	ft_printf("push_a\n");
+	ft_printf("pa\n");
 }
 
 void	push_b(t_stack **stack_a, t_stack **stack_b)
@@ -80,13 +80,14 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_b;
-	ft_printf("push_b\n");
+	ft_printf("pb\n");
 }
 
-void	rotate(t_stack **stack)
+void	rotate(t_stack **stack, char c)
 {
 	int		temp;
 
+	print_move(c, 'r');
 	if (!*stack)
 		return ;
 	temp = (*stack)->content;
@@ -97,13 +98,15 @@ void	rotate(t_stack **stack)
 	}
 	(*stack)->content = temp;
 	*stack = goto_head(*stack);
-	ft_printf("rotate\n");
 }
 
-void	reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack, char c)
 {
 	int old_last;
 
+	print_move(c, 'v');
+	if (!*stack)
+		return;
 	while	((*stack)->next)
 		*stack = (*stack)->next;
 	old_last = (*stack)->content;
@@ -113,6 +116,5 @@ void	reverse_rotate(t_stack **stack)
 		*stack = (*stack)->prev;
 	}
 	(*stack)->content = old_last;
-	ft_printf("reverse_rotate\n");
 }
 

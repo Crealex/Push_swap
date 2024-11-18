@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dirty_algo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:53:10 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/18 17:15:52 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/18 22:10:34 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 		 || ((*stack_a)->content < temp_b->content && (*stack_a)->content > temp_b->next->content))
 		{
 			*stack_b = temp_b;
-			rotate(stack_b);
+			rotate(stack_b, 'b');
 			push_b(stack_a, stack_b);
 			ft_printf(YELLOW"insertion entre 2 valeurs :\n"END);
 			read_stack(*stack_a, *stack_b); // pour verif un truc
@@ -40,16 +40,16 @@ void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
 	if ((*stack_a)->content > (*stack_b)->content)
 	{
 		ft_printf(YELLOW"insertion du plus gros :\n"END);
-		goto_biggest(stack_b);
+		goto_biggest(stack_b, 'b');
 		push_b(stack_a, stack_b);
 		read_stack(*stack_a, *stack_b); // pour verif un truc
 	}
 	else
 	{
 		ft_printf(YELLOW"insertion du plus petit :\n"END);
-		goto_biggest(stack_b);
+		goto_biggest(stack_b, 'b');
 		push_b(stack_a, stack_b);
-		rotate(stack_b);
+		rotate(stack_b, 'b');
 		read_stack(*stack_a, *stack_b); // pour verif un truc
 	}
 }

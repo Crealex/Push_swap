@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_tester.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/18 17:40:21 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/18 22:13:16 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("test du mouvement swap, 1er num : %d\n", stack_a->content);
 	ft_printf("test du mouvement swap 2eme num : %d\n", stack_a->next->content);
 	ft_printf("----------SWAAAAAAAP----------\n");
-	stack_a = swap(stack_a);
+	stack_a = swap(stack_a, 'a');
 	ft_printf("test du mouvement swap, 1er num : %d\n", stack_a->content);
 	ft_printf("test du mouvement swap 2eme num : %d\n", stack_a->next->content);
 	read_stack(stack_a, stack_b);
@@ -92,9 +92,9 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	push_a(&stack_a, &stack_b);
 	read_stack(stack_a, stack_b);
 	ft_printf(YELLOW BOLD"FONCTION ROTATE (sur stack_a)\n"END);
-	rotate(&stack_a);
+	rotate(&stack_a, 'a');
 	read_stack(stack_a, stack_b);
 	ft_printf(YELLOW BOLD"FONCTION REVERSE ROTATE (sur stack_a)\n"END);
-	reverse_rotate(&stack_a);
+	reverse_rotate(&stack_a, 'a');
 	read_stack(stack_a, stack_b);
 }

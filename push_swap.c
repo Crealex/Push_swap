@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/14 14:49:35 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/18 22:12:28 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	insert_max(t_stack	**stack_a, t_stack **stack_b)
 void	insert_min(t_stack **stack_a, t_stack **stack_b)
 {
 	insert_max(stack_a, stack_b);
-	rotate(stack_b);
+	rotate(stack_b, 'b');
 }
 
 void	insert_middle(t_stack **stack_a, t_stack **stack_b)
@@ -84,13 +84,13 @@ void	insert_middle(t_stack **stack_a, t_stack **stack_b)
 	{
 		if ((*stack_a)->content < (*stack_b)->content && (*stack_a)->content > (*stack_b)->next->content)
 		{
-			rotate(stack_b);
+			rotate(stack_b, 'b');
 			push_b(stack_a, stack_b);
 			break ;
 		}
 		else
 		{
-			rotate(stack_b);
+			rotate(stack_b, 'b');
 		}
 		(*stack_a) = (*stack_a)->next;
 		read_stack(*stack_a, *stack_b);
