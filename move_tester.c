@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_tester.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/17 21:32:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/18 17:40:21 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	read_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int len_a;
+	//int len_b;
 	if (stack_a)
 	{
 		while (stack_a->prev)
@@ -40,6 +41,7 @@ void	read_stack(t_stack *stack_a, t_stack *stack_b)
 		stack_a = stack_a->prev;
 	} */
 	ft_printf("la stack_a contient %d chiffre(s)\n", len_a);
+	//len_b = len_stack(stack_b);
 	// -------------PILE B------------------
 	ft_printf(BOLD"PILE B:\n"END CYAN);
 	if (stack_b)
@@ -51,6 +53,7 @@ void	read_stack(t_stack *stack_a, t_stack *stack_b)
 		}
 		ft_printf("  %d\n", stack_b->content);
 	}
+	//ft_printf("la stack_b contient %d chiffre(s)\n", len_b);
 	//retour au debut
 	/* while(stack_b->prev)
 	{
@@ -77,13 +80,13 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("1er satck a : %d\n", stack_a->content);
 	ft_printf("1er satck b : %d\n", stack_b->content);
 	read_stack(stack_a, stack_b);
-	ft_printf("test de push un max : ");
+	/* ft_printf("test de push un max : ");
 	while(stack_a)
 	{
 		push_b(&stack_a, &stack_b);
 		read_stack(stack_a, stack_b);
 	}
-	//push_b(&stack_a, &stack_b);
+	// */push_b(&stack_a, &stack_b);
 	read_stack(stack_a, stack_b);
 	ft_printf(YELLOW BOLD"FONCTION PUSH_A\n"END);
 	push_a(&stack_a, &stack_b);
@@ -92,6 +95,6 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	rotate(&stack_a);
 	read_stack(stack_a, stack_b);
 	ft_printf(YELLOW BOLD"FONCTION REVERSE ROTATE (sur stack_a)\n"END);
-	stack_a = reverse_rotate(stack_a);
+	reverse_rotate(&stack_a);
 	read_stack(stack_a, stack_b);
 }

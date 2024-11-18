@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 23:05:22 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/18 17:36:52 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_stack	*swap(t_stack *stack);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 void	rotate(t_stack **stack);
-t_stack	*reverse_rotate(t_stack *stack);
+void	reverse_rotate(t_stack **stack);
 t_stack	*ft_lstnew_pimp(int content);
 void	ft_lstadd_back_pimp(t_stack **lst, t_stack *new);
 void	move_teser(t_stack *stack_a, t_stack *stack_b); // test des moves et du parsing
@@ -48,5 +48,6 @@ int		is_sorted(t_stack *stack);
 void	goto_biggest(t_stack **stack);
 void	first_phase(t_stack *stack_a, t_stack *stack_b);
 void	dirty_algo(t_stack **stack_a, t_stack **stack_b);
+void	bignum_algo(t_stack **stack_a, t_stack **stack_b);
 
 #endif

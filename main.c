@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/17 21:38:44 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/18 17:43:03 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ int main(int argc, char **argv)
 		free(stack_b);
 		return (1);
 	}
-	read_stack(stack_a, stack_b);
+	//ft_printf(YELLOW"-----DEBUT-----\n\n");
+	//read_stack(stack_a, stack_b);
 	//move_teser(stack_a, stack_b);
-	dirty_algo(&stack_a, &stack_b);
-	read_stack(stack_a, stack_b);
+	bignum_algo(&stack_a, &stack_b);
+	//dirty_algo(&stack_a, &stack_b);
+	//ft_printf(YELLOW"-----FINAL-----\n\n");
+	//read_stack(stack_a, stack_b);
 }
