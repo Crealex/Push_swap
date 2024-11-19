@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 19:21:46 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/19 21:37:08 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,6 @@ int		find_target(int current, t_stack *stack)
 	}
 }
 
-int		cost_compare(t_stack *stack, int target)
-{
-	t_stack *temp;
-	int count;
-	int count_rev;
-
-	count = count_rot(stack, target);
-	count_rev = count_rev_rot(stack, target);
-	return (count - count_rev);
-}
-
 int		cost_calculator(t_stack *stack, int target)
 {
 	int choice;
@@ -78,26 +67,26 @@ t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num)
 	return (res);
 }
 
-t_target	*find_choice(t_stack **stack_a, t_stack **stack_b)
+t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 {
 	t_cost	*smallest_cost;
 	t_cost	*current_cost;
 	t_target *res;
 	t_stack	*temp_a;
 
-	if (is_sorted(*stack_a))
+	if (is_sorted(stack_a))
 		return ;
-	if (len_stack(*stack_a) <= 3)
+	if (len_stack(stack_a) <= 3)
 	{
-		little_sort(*stack_a, 'a');
+		little_sort(stack_a, 'a');
 		return ;
 	}
-	temp_a = *stack_a;
-	smallest_cost = cost_parsing(*stack_a, *stack_b, temp_a->content);
+	temp_a = stack_a;
+	smallest_cost = cost_parsing(stack_a, stack_b, temp_a->content);
 	res = malloc(sizeof(t_target) * 1);
 	while (temp_a)
 	{
-		current_cost = cost_parsing(*stack_a, *stack_b, temp_a->content);
+		current_cost = cost_parsing(stack_a, stack_b, temp_a->content);
 		if (current_cost->total_cost < smallest_cost->total_cost)
 			smallest_cost = current_cost;
 		temp_a = temp_a->next;

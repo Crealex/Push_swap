@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 19:25:01 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/19 21:54:50 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h> // Pour faire des tests
-#include "libft/libft.h"
+# include "libft/libft.h"
 typedef struct s_stack
 {
 	int			content;
@@ -73,9 +73,12 @@ void	shadow_rotate(t_stack **stack);
 void	shadow_reverse_rotate(t_stack **stack);
 int		count_rot(t_stack *stack, int target);
 int		count_rev_rot(t_stack *stack,int  target);
+// turk_algo_utils2.c
+int		cost_compare(t_stack *stack, int target);
 // turk algo
-t_target	*find_choice(t_stack **stack_a, t_stack **stack_b);
+t_target	*find_choice(t_stack *stack_a, t_stack *stack_b);
 void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice);
+void	turk_sort(t_stack **stack_a, t_stack **stack_b);
 // algos
 void	first_phase(t_stack *stack_a, t_stack *stack_b);
 void	dirty_algo(t_stack **stack_a, t_stack **stack_b);
