@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_algo.c                                        :+:      :+:    :+:   */
+/*   turk_algo_choice.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 18:07:09 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:21:46 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,57 +45,20 @@ int		cost_compare(t_stack *stack, int target)
 	int count;
 	int count_rev;
 
-	temp = stack;
-	count = 0;
-	count_rev = 0;
-	while (temp)
-	{
-		if (temp->content == target)
-			break ;
-		count++;
-		shadow_rotate(&temp);
-	}
-	temp = stack;
-	while (temp)
-	{
-		if (temp->content == target)
-			break ;
-		count_rev++;
-		shadow_reverse_rotate(&temp);
-	}
+	count = count_rot(stack, target);
+	count_rev = count_rev_rot(stack, target);
 	return (count - count_rev);
 }
 
 int		cost_calculator(t_stack *stack, int target)
 {
-	// faire une fonction qui compte pour rotate et une qui compte pour reverse rotate (a faire dans turk_utils)
-	t_stack *temp;
-	int count;
 	int choice;
 
 	choice = cost_compare(stack, target);
 	if (choice > 0)
-	{
-		while (temp)
-		{
-			if (temp->content == target)
-				break ;
-			count++;
-			shadow_reverse_rotate(&temp);
-		}
-		return (count);
-	}
+		return (count_rev_rot(stack, target));
 	else
-	{
-		while (temp)
-		{
-			if (temp->content == target)
-				break ;
-			count++;
-			shadow_rotate(&temp);
-		}
-		return (count);
-	}
+		return (count_rot(stack, target));
 }
 
 t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num)
@@ -115,10 +78,11 @@ t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num)
 	return (res);
 }
 
-void	turk_algo(t_stack **stack_a, t_stack **stack_b)
+t_target	*find_choice(t_stack **stack_a, t_stack **stack_b)
 {
 	t_cost	*smallest_cost;
 	t_cost	*current_cost;
+	t_target *res;
 	t_stack	*temp_a;
 
 	if (is_sorted(*stack_a))
@@ -130,6 +94,7 @@ void	turk_algo(t_stack **stack_a, t_stack **stack_b)
 	}
 	temp_a = *stack_a;
 	smallest_cost = cost_parsing(*stack_a, *stack_b, temp_a->content);
+	res = malloc(sizeof(t_target) * 1);
 	while (temp_a)
 	{
 		current_cost = cost_parsing(*stack_a, *stack_b, temp_a->content);
@@ -137,4 +102,7 @@ void	turk_algo(t_stack **stack_a, t_stack **stack_b)
 			smallest_cost = current_cost;
 		temp_a = temp_a->next;
 	}
+	res->target_a = temp_a->content;
+	res->target_b = smallest_cost->number;
+	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:27:50 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 17:52:41 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:43:09 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,36 @@ void	shadow_reverse_rotate(t_stack **stack)
 		*stack = (*stack)->prev;
 	}
 	(*stack)->content = old_last;
+}
+
+int		count_rot(t_stack *stack, int target)
+{
+	t_stack *temp;
+	int count;
+
+	temp = stack;
+	count = 0;
+	while (temp)
+	{
+		if (temp->content == target)
+			return (count);
+		shadow_rotate(temp);
+	}
+	return (NULL);
+}
+
+int		count_rev_rot(t_stack *stack,int  target)
+{
+	t_stack *temp;
+	int count;
+
+	temp = stack;
+	count = 0;
+	while (temp)
+	{
+		if (temp->content == target)
+			return (count);
+		shadow_reverse_rotate(temp);
+	}
+	return (NULL);
 }

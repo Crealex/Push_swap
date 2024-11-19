@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 17:53:10 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:25:01 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ typedef struct s_cost
 	int		total_cost; // Coût total
 	int		number;     // Le nombre concerné
 }	t_cost;
+typedef struct s_target
+{
+	int		target_a;     // cible a atteidre dans la stack A
+	int		target_b;     // cible a atteindre dans la stack B
+}	t_target;
 // parsing and checker
 t_stack	*parsing(int argc, char **argv);
 int		checker(int argc, char **argv);
@@ -66,6 +71,11 @@ void	update_two_index(t_stack *stack_a, t_stack *stack_b);
 int		show_biggest(t_stack *stack);
 void	shadow_rotate(t_stack **stack);
 void	shadow_reverse_rotate(t_stack **stack);
+int		count_rot(t_stack *stack, int target);
+int		count_rev_rot(t_stack *stack,int  target);
+// turk algo
+t_target	*find_choice(t_stack **stack_a, t_stack **stack_b);
+void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice);
 // algos
 void	first_phase(t_stack *stack_a, t_stack *stack_b);
 void	dirty_algo(t_stack **stack_a, t_stack **stack_b);
