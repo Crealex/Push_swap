@@ -69,6 +69,7 @@ t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num)
 
 t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 {
+	// Ajouter le choix de faire swap si target == stack->next du premier element
 	t_cost	*smallest_cost;
 	t_cost	*current_cost;
 	t_target *res;
