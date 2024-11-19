@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bignum_algo.c                                      :+:      :+:    :+:   */
+/*   push_swap_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 17:32:30 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 10:29:24 by atomasi          ###   ########.fr       */
+/*   Created: 2024/11/19 13:13:38 by atomasi           #+#    #+#             */
+/*   Updated: 2024/11/19 13:33:52 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bignum_algo(t_stack **stack_a, t_stack **stack_b)
+void	update_index(t_stack *stack)
 {
-	if (is_sorted(*stack_a))
-		return ;
-	while(*stack_a)
+	int i;
+	t_stack *current;
+
+	current = stack;
+	i = 0;
+	while (current)
 	{
-		push_b(stack_a, stack_b);
+		current->index = i;
+		i++;
+		current = current->next;
 	}
-	while (*stack_b)
-	{
-		goto_biggest(stack_b, 'b');
-		push_a(stack_a, stack_b);
-	}
+}
+
+void	update_two_index(t_stack *stack_a, t_stack *stack_b)
+{
+	if (!stack_a || !stack_b)
+		return;
+	update_index(stack_a);
+	update_index(stack_b);
+
 }

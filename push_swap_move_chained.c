@@ -3,32 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_move_chained.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/18 22:14:12 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/19 14:19:29 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*swap(t_stack *stack, char c)
+void	swap(t_stack **stack, char c)
 {
-	t_stack	*first;
-	t_stack	*second;
+	int temp;
+
 	print_move(c, 's');
-	if (!stack || !stack->next)
-		return (stack);
-	first = stack;
-	second = stack->next;
-	first->next = second->next;
-	second->next = first;
-	second->prev = first->prev;
-	first->prev = second;
-	if (first->next)
-		first->next->prev = first;
-	ft_printf("swap\n");
-	return (second);
+	if (!*stack || !(*stack)->next)
+		return ;
+	temp = (*stack)->content;
+	(*stack)->content = (*stack)->next->content;
+	(*stack)->next->content = temp;
+	update_index(*stack);
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
@@ -43,6 +37,8 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		(*stack_a)->content = (*stack_b)->content;
 		*stack_b = (*stack_b)->next;
 		(*stack_b)->prev = NULL;
+		ft_printf("pa\n");
+		update_two_index(*stack_a, *stack_b);
 		return ;
 	}
 	temp = *stack_a;
@@ -54,6 +50,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	(*stack_a)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_a;
+	update_two_index(*stack_a, *stack_b);
 	ft_printf("pa\n");
 }
 
@@ -69,6 +66,8 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		(*stack_b)->content = (*stack_a)->content;
 		*stack_a = (*stack_a)->next;
 		(*stack_a)->prev = NULL;
+		ft_printf("pb\n");
+		update_two_index(*stack_a, *stack_b);
 		return ;
 	}
 	temp = *stack_b;
@@ -80,6 +79,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_b;
+	update_two_index(*stack_a, *stack_b);
 	ft_printf("pb\n");
 }
 
@@ -98,6 +98,7 @@ void	rotate(t_stack **stack, char c)
 	}
 	(*stack)->content = temp;
 	*stack = goto_head(*stack);
+	update_index(*stack);
 }
 
 void	reverse_rotate(t_stack **stack, char c)
@@ -107,7 +108,7 @@ void	reverse_rotate(t_stack **stack, char c)
 	print_move(c, 'v');
 	if (!*stack)
 		return;
-	while	((*stack)->next)
+	while ((*stack)->next)
 		*stack = (*stack)->next;
 	old_last = (*stack)->content;
 	while((*stack)->prev)
@@ -116,5 +117,6 @@ void	reverse_rotate(t_stack **stack, char c)
 		*stack = (*stack)->prev;
 	}
 	(*stack)->content = old_last;
+	update_index(*stack);
 }
 

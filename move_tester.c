@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_tester.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/18 22:13:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/19 13:54:26 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ void	read_stack(t_stack *stack_a, t_stack *stack_b)
 	{
 		while (stack_a->next)
 		{
+			ft_printf("index : %d\n", stack_a->index);
 			ft_printf("  %d\n", stack_a->content);
 			stack_a = stack_a->next;
 		}
+		ft_printf("index : %d\n", stack_a->index);
 		ft_printf("  %d\n", stack_a->content);
 	}
 	//retour au debut
@@ -69,7 +71,7 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf("test du mouvement swap, 1er num : %d\n", stack_a->content);
 	ft_printf("test du mouvement swap 2eme num : %d\n", stack_a->next->content);
 	ft_printf("----------SWAAAAAAAP----------\n");
-	stack_a = swap(stack_a, 'a');
+	swap(&stack_a, 'a');
 	ft_printf("test du mouvement swap, 1er num : %d\n", stack_a->content);
 	ft_printf("test du mouvement swap 2eme num : %d\n", stack_a->next->content);
 	read_stack(stack_a, stack_b);

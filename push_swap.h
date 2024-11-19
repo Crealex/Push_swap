@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/18 22:12:00 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/19 17:53:10 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,48 @@
 typedef struct s_stack
 {
 	int			content;
+	int			index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
+typedef struct s_cost
+{
+	int		cost_a;     // Coût pour positionner dans la stack A
+	int		cost_b;     // Coût pour positionner dans la stack B
+	int		total_cost; // Coût total
+	int		number;     // Le nombre concerné
+}	t_cost;
+// parsing and checker
 t_stack	*parsing(int argc, char **argv);
 int		checker(int argc, char **argv);
-t_stack	*swap(t_stack *stack, char c);
+// Move (push_swap_move_chained.c)
+void	swap(t_stack **stack, char c);
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 void	rotate(t_stack **stack, char c);
 void	reverse_rotate(t_stack **stack, char c);
+// libft_pimp.c
 t_stack	*ft_lstnew_pimp(int content);
 void	ft_lstadd_back_pimp(t_stack **lst, t_stack *new);
 void	move_teser(t_stack *stack_a, t_stack *stack_b); // test des moves et du parsing
 void	read_stack(t_stack *stack_a, t_stack *stack_b); // Impresssion des stack
+// push_swap_utils.c
 int		len_stack(t_stack *stack); // calcule de la longeur de la liste
 t_stack	*goto_head(t_stack *stack); //retour au premier element de la liste
 int		is_sorted(t_stack *stack);
 void	goto_biggest(t_stack **stack, char c);
 void	print_move(char s, char m);
+// push_swap_utils_2.c
+void	update_index(t_stack *stack);
+void	update_two_index(t_stack *stack_a, t_stack *stack_b);
+// turk_algo_utils.c
+int		show_biggest(t_stack *stack);
+void	shadow_rotate(t_stack **stack);
+void	shadow_reverse_rotate(t_stack **stack);
+// algos
 void	first_phase(t_stack *stack_a, t_stack *stack_b);
 void	dirty_algo(t_stack **stack_a, t_stack **stack_b);
 void	bignum_algo(t_stack **stack_a, t_stack **stack_b);
+void	little_sort(t_stack **stack, char c);
 
 #endif
