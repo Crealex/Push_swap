@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_exec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:52:59 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/19 21:31:47 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/20 15:52:43 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 void	move_stack(t_stack **stack, int target, char c)
 {
 	int choice;
+	t_stack *temp;
 
-	choice = cost_compare(*stack, target);
+	temp = *stack;
+	ft_printf("stack : %d\n", (*stack)->content);
+	choice = cost_compare(temp, target);
+	ft_printf("stack : %d\n", (*stack)->content);
+	ft_printf("target : %d\n", target);
 	if (choice > 0)
 	{
 		while (*stack)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:27:50 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 18:43:09 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/20 16:18:53 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,48 +15,57 @@
 t_stack	*show_biggest(t_stack *stack)
 {
 	t_stack	*biggest_temp;
+	int i;
 
 	biggest_temp = stack;
-	while (stack)
+	i = 0;
+	while (len_stack(stack) <= i)
 	{
-		if (stack->content > biggest_temp->content)
+		if (stack->content > biggest_temp->content) // a modifier, il faut faire des rotates a la place !!!
 			biggest_temp = stack;
-		stack = stack->next;
+		stack = shadow_rotate(stack);
+		i++;
 	}
 	return (biggest_temp);
 }
 
-void	shadow_rotate(t_stack **stack)
+t_stack	*shadow_rotate(t_stack *stack)
 {
-	int		temp;
+	int		num;
+	t_stack *temp;
 
-	if (!*stack)
-		return ;
-	temp = (*stack)->content;
-	while((*stack)->next)
+	if (!stack)
+		return (NULL);
+	temp = stack;
+	num = (temp)->content;
+	while((temp)->next)
 	{
-		(*stack) = (*stack)->next;
-		(*stack)->prev->content = (*stack)->content;
+		(temp) = (temp)->next;
+		(temp)->prev->content = (temp)->content;
 	}
-	(*stack)->content = temp;
-	*stack = goto_head(*stack);
+	(temp)->content = num;
+	temp = goto_head(temp);
+	return (temp);
 }
 
-void	shadow_reverse_rotate(t_stack **stack)
+t_stack	*shadow_reverse_rotate(t_stack *stack)
 {
 	int old_last;
+	t_stack *temp;
 
-	if (!*stack)
-		return;
-	while ((*stack)->next)
-		*stack = (*stack)->next;
-	old_last = (*stack)->content;
-	while((*stack)->prev)
+	if (!stack)
+		return (NULL);
+	temp = stack;
+	while ((temp)->next)
+		temp = temp->next;
+	old_last = (temp)->content;
+	while((temp)->prev)
 	{
-		(*stack)->content = (*stack)->prev->content;
-		*stack = (*stack)->prev;
+		(temp)->content = (temp)->prev->content;
+		temp = (temp)->prev;
 	}
-	(*stack)->content = old_last;
+	(temp)->content = old_last;
+	return (temp);
 }
 
 int		count_rot(t_stack *stack, int target)
@@ -70,9 +79,10 @@ int		count_rot(t_stack *stack, int target)
 	{
 		if (temp->content == target)
 			return (count);
-		shadow_rotate(temp);
+		temp = shadow_rotate(temp);
+		count++;
 	}
-	return (NULL);
+	return (0);
 }
 
 int		count_rev_rot(t_stack *stack,int  target)
@@ -86,7 +96,8 @@ int		count_rev_rot(t_stack *stack,int  target)
 	{
 		if (temp->content == target)
 			return (count);
-		shadow_reverse_rotate(temp);
+		temp = shadow_reverse_rotate(temp);
+		count++;
 	}
-	return (NULL);
+	return (0);
 }

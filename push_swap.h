@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 21:54:50 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/20 16:10:58 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
 # define BOLD "\033[1m"
 # define END "\033[0m"
-# define YELLOW "\033[0;33m"
-# define CYAN "\033[0;36m"
-# define RED "\033[0;31m"
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
@@ -38,6 +41,7 @@ typedef struct s_cost
 	int		cost_b;     // Coût pour positionner dans la stack B
 	int		total_cost; // Coût total
 	int		number;     // Le nombre concerné
+	int		target;		// Le nombre cible
 }	t_cost;
 typedef struct s_target
 {
@@ -68,9 +72,9 @@ void	print_move(char s, char m);
 void	update_index(t_stack *stack);
 void	update_two_index(t_stack *stack_a, t_stack *stack_b);
 // turk_algo_utils.c
-int		show_biggest(t_stack *stack);
-void	shadow_rotate(t_stack **stack);
-void	shadow_reverse_rotate(t_stack **stack);
+t_stack		*show_biggest(t_stack *stack);
+t_stack	*shadow_rotate(t_stack *stack);
+t_stack	*shadow_reverse_rotate(t_stack *stack);
 int		count_rot(t_stack *stack, int target);
 int		count_rev_rot(t_stack *stack,int  target);
 // turk_algo_utils2.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:23:16 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/19 21:23:54 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/20 16:22:56 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int		cost_compare(t_stack *stack, int target)
 	int count;
 	int count_rev;
 
-	count = count_rot(stack, target);
-	count_rev = count_rev_rot(stack, target);
+	temp = stack;
+	count = count_rot(temp, target); // le probelme vient porbablement de là
+	count_rev = count_rev_rot(temp, target);
 	return (count - count_rev);
 }
