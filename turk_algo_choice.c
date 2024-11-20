@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_choice.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/20 15:22:07 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/20 17:15:01 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	t_target *res;
 	t_stack	*temp_a;
 
-	temp_a = stack_a;
+	temp_a = copy_stack_content(stack_a);
 	smallest_cost = cost_parsing(stack_a, stack_b, temp_a->content);
 	res = malloc(sizeof(t_target) * 1);
 	temp_a = temp_a->next;
@@ -89,5 +89,6 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	}
 	res->target_a = smallest_cost->number;
 	res->target_b = smallest_cost->target;
+	free_stack_copy(temp_a);
 	return (res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/20 16:10:58 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/20 17:02:11 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	print_move(char s, char m);
 // push_swap_utils_2.c
 void	update_index(t_stack *stack);
 void	update_two_index(t_stack *stack_a, t_stack *stack_b);
+t_stack	*copy_stack_content(t_stack *stack);
+void	free_stack_copy(t_stack *stack);
 // turk_algo_utils.c
 t_stack		*show_biggest(t_stack *stack);
 t_stack	*shadow_rotate(t_stack *stack);
