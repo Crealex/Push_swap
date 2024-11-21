@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/20 15:30:49 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/21 11:30:35 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	//ft_printf(YELLOW"-----DEBUT-----\n\n");
-	update_index(stack_a);
-	read_stack(stack_a, stack_b);
+	//update_index(stack_a);
+	//read_stack(stack_a, stack_b);
 	//move_teser(stack_a, stack_b);
-	turk_sort(&stack_a, &stack_b);
-	//bignum_algo(&stack_a, &stack_b);
+	//turk_sort(&stack_a, &stack_b);
+	bignum_algo(&stack_a, &stack_b);
 	//dirty_algo(&stack_a, &stack_b);
 	//little_sort(&stack_a, 'a');
-	ft_printf(YELLOW"-----FINAL-----");
-	read_stack(stack_a, stack_b);
+	//ft_printf(YELLOW"-----FINAL-----");
+	//read_stack(stack_a, stack_b);
 }

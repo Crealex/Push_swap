@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/20 15:41:04 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/21 11:23:03 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	{
 		*stack_b = malloc(sizeof(t_stack) * 1);
 		(*stack_b)->content = (*stack_a)->content;
+		temp = *stack_a;
 		*stack_a = (*stack_a)->next;
+		free(temp);
 		(*stack_a)->prev = NULL;
 		ft_printf("pb\n");
 		update_two_index(*stack_a, *stack_b);
