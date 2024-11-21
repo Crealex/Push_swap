@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/20 17:15:01 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/21 18:06:18 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ int		find_target(int current, t_stack *stack)
 	t_stack *target;
 	if (!stack)
 		return (0);
-	temp = stack;
+	temp = copy_stack_content(stack);
 	target = stack;
 	while (temp->next)
 	{
-		if ((temp->content > current && temp->next->content < current))
+		if ((temp->content < current && temp->next->content > current))
 		{
 			return (temp->next->content);
 		}
 		temp = temp->next;
 	}
+	free_stack_copy(temp);
 	if (stack->content > current)
 	{
 		target = show_biggest(stack);
@@ -90,5 +91,7 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	res->target_a = smallest_cost->number;
 	res->target_b = smallest_cost->target;
 	free_stack_copy(temp_a);
+	free(current_cost);
+	free(smallest_cost);
 	return (res);
 }
