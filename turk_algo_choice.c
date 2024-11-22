@@ -16,6 +16,7 @@ int		find_target(int current, t_stack *stack)
 {
 	t_stack *temp;
 	t_stack *target;
+	int num;
 	if (!stack)
 		return (0);
 	temp = copy_stack_content(stack);
@@ -24,7 +25,9 @@ int		find_target(int current, t_stack *stack)
 	{
 		if ((temp->content < current && temp->next->content > current))
 		{
-			return (temp->next->content);
+			num = temp->next->content;
+			free_stack_copy(temp);
+			return (num);
 		}
 		temp = temp->next;
 	}
@@ -52,10 +55,11 @@ int		cost_calculator(t_stack *stack, int target)
 		return (count_rot(stack, target));
 }
 
-t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num)
+t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num, t_cost *old_cost)
 {
 	int		target;
 	t_cost *res;
+	free(old_cost);
 	res = malloc(sizeof(t_cost) * 1);
 	res->number = current_num;
 	//1. Trouver la position cible de chaque element.
@@ -78,20 +82,22 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	t_stack	*temp_a;
 
 	temp_a = copy_stack_content(stack_a);
-	smallest_cost = cost_parsing(stack_a, stack_b, temp_a->content);
+	current_cost = NULL;
+	smallest_cost = NULL;
+	smallest_cost = cost_parsing(stack_a, stack_b, temp_a->content, smallest_cost);
 	res = malloc(sizeof(t_target) * 1);
 	temp_a = temp_a->next;
 	while (temp_a->next)
 	{
-		current_cost = cost_parsing(stack_a, stack_b, temp_a->content);
+		current_cost = cost_parsing(stack_a, stack_b, temp_a->content, current_cost);
 		if (current_cost->total_cost < smallest_cost->total_cost)
 			smallest_cost = current_cost;
 		temp_a = temp_a->next;
 	}
 	res->target_a = smallest_cost->number;
 	res->target_b = smallest_cost->target;
-	free_stack_copy(temp_a);
 	free(current_cost);
+	free_stack_copy(temp_a);
 	free(smallest_cost);
 	return (res);
 }

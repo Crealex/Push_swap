@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	update_index(t_stack *stack)
+/* void	update_index(t_stack *stack)
 {
 	int i;
 	t_stack *current;
@@ -25,42 +25,44 @@ void	update_index(t_stack *stack)
 		i++;
 		current = current->next;
 	}
-}
+} */
 
 void	update_two_index(t_stack *stack_a, t_stack *stack_b)
 {
 	if (!stack_a || !stack_b)
 		return;
-	update_index(stack_a);
-	update_index(stack_b);
+	//update_index(stack_a);
+	//update_index(stack_b);
 }
 
 t_stack	*copy_stack_content(t_stack *stack)
 {
 	t_stack	*new;
 	t_stack	*temp;
+	t_stack	*head;
 
 	if (!stack)
 		return (NULL);
-	new = malloc(sizeof(t_stack));
+	new = ft_lstnew_pimp(stack->content);
 	if (!new)
 		return (NULL);
-	new->content = stack->content;
-	new->next = NULL;
-	new->prev = NULL;
+	head = new;
 	temp = stack->next;
 	while (temp)
 	{
 		new->next = malloc(sizeof(t_stack));
 		if (!new->next)
+		{
+			free_stack_copy(head);
 			return (NULL);
+		}
 		new->next->content = temp->content;
 		new->next->prev = new;
 		new = new->next;
 		temp = temp->next;
 	}
 	new->next = NULL;
-	return (goto_head(new));
+	return (goto_head(head));
 }
 
 void	free_stack_copy(t_stack *stack)

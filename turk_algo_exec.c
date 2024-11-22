@@ -43,5 +43,6 @@ void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 {
 	move_stack(stack_a, choice->target_a, 'a');
 	move_stack(stack_b, choice->target_b, 'b');
+	free(choice);
 	push_b(stack_a, stack_b);
 }

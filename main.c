@@ -27,8 +27,6 @@ int main(int argc, char **argv)
 	if (!stack_a)
 	{
 		ft_putendl_fd(RED"Erreur, arguments invalide\n"END, 2);
-		free(stack_a);
-		free(stack_b);
 		return (1);
 	}
 	//ft_printf(YELLOW"-----DEBUT-----\n\n");
@@ -41,4 +39,7 @@ int main(int argc, char **argv)
 	//little_sort(&stack_a, 'a');
 	//ft_printf(YELLOW"-----FINAL-----");
 	read_stack(stack_a, stack_b);
+	free_stack_copy(stack_a);
+	free_stack_copy(stack_b);
+	return (0);
 }

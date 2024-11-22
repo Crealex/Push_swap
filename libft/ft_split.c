@@ -12,7 +12,18 @@
 
 #include "libft.h"
 
-static int	counterc(char const *s, char c)
+void	ft_free_split(char **res, int i)
+{
+	while (i >= 0)
+	{
+		if (res[i])
+			free(res[i]);
+		i--;
+	}
+	free(res);
+}
+
+static int	count_words(const char *s, char c)
 {
 	int	count;
 	int	i;
@@ -33,27 +44,27 @@ static int	counterc(char const *s, char c)
 	return (count);
 }
 
-static int	malloc_words(char **res, const char *s, char c)
+static int	alloc_words(char **res, const char *s, char c)
 {
 	int	word;
-	int	countl;
+	int	len;
 	int	i;
 
 	word = 0;
 	i = 0;
 	while (s[i])
 	{
-		countl = 0;
+		len = 0;
 		while (s[i] == c)
 			i++;
 		while (s[i] != c && s[i])
 		{
-			countl++;
+			len++;
 			i++;
 		}
-		if (countl > 0)
+		if (len > 0)
 		{
-			res[word] = malloc(countl + 1);
+			res[word] = malloc(sizeof(char) * (len + 1));
 			if (!res[word++])
 				return (0);
 		}
@@ -62,58 +73,51 @@ static int	malloc_words(char **res, const char *s, char c)
 	return (1);
 }
 
-static void	fill(char **res, const char *s, char c)
+static void	fill_words(char **res, const char *s, char c)
 {
 	int	i;
-	int	jres;
-	int	ires;
+	int	j;
+	int	w;
 
 	i = 0;
-	jres = 0;
-	ires = 0;
+	w = 0;
+	j = 0;
 	while (s[i] == c)
 		i++;
 	while (s[i])
 	{
 		if (s[i] == c)
 		{
-			res[ires][jres] = '\0';
-			ires++;
-			jres = 0;
+			res[w][j] = '\0';
+			w++;
+			j = 0;
 			while (s[i] == c)
 				i++;
 			continue ;
 		}
-		res[ires][jres++] = s[i++];
+		res[w][j++] = s[i++];
 	}
-	if (ires < counterc(s, c))
-		res[ires][jres] = '\0';
+	if (w < count_words(s, c))
+		res[w][j] = '\0';
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		word_count;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
-	word_count = counterc(s, c);
+	word_count = count_words(s, c);
 	res = malloc(sizeof(char *) * (word_count + 1));
-	if (res == NULL)
+	if (!res)
 		return (NULL);
-	if (!malloc_words(res, s, c))
+	if (!alloc_words(res, s, c))
 	{
-		while (res[i])
-		{
-			free(res[i]);
-			i++;
-		}
-		free(res);
-		return (NULL);
+			ft_free_split(res, word_count);
+			return (NULL);
 	}
 	if (word_count > 0)
-		fill(res, s, c);
+		fill_words(res, s, c);
 	return (res);
 }

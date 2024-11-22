@@ -40,6 +40,7 @@ int		put_in_stack(t_stack **stack, char **res)
 		ft_lstadd_back_pimp(stack, temp_a);
 		i++;
 	}
+	ft_free_split(res, i);
 	return (1);
 }
 
@@ -62,7 +63,6 @@ t_stack	*parsing(int argc, char **argv)
 		res = ft_split(argv[i], ' ');
 		if (!put_in_stack(&stack_a, res))
 			return (NULL);
-		free(res);
 		i++;
 	}
 	return (stack_a);

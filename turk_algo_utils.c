@@ -95,7 +95,9 @@ int		count_rev_rot(t_stack *stack,int  target)
 	while (temp)
 	{
 		if (temp->content == target)
+		{
 			return (count);
+		}
 		temp = shadow_reverse_rotate(temp);
 		count++;
 	}

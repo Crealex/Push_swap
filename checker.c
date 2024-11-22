@@ -61,6 +61,7 @@ int	num_checker(char **res)
 				return (0);
 		i++;
 	}
+	ft_free_split(res, i);
 	return (1);
 }
 
@@ -74,14 +75,13 @@ int		checker(int argc, char **argv)
 	while (i < argc)
 	{
 		res = ft_split(argv[i], ' ');
-	if (!num_checker(res))
-	{
-		free(res);
-		return (0);
-	}
+		if (!num_checker(res))
+		{
+			ft_free_split(res, i);
+			return (0);
+		}
 		i++;
 	}
-	free(res);
 	return (1);
 }
 

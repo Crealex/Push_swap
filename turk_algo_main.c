@@ -27,7 +27,10 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 
 	temp_a = copy_stack_content(*stack_a);
 	if (is_sorted(*stack_a))
-		exit(EXIT_SUCCESS);
+	{
+		free_stack_copy(temp_a);
+		exit (EXIT_SUCCESS);
+	}
 	push_b(stack_a, stack_b);
 	push_b(stack_a, stack_b);
 	while (temp_a)
@@ -35,11 +38,15 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 		ft_printf("longueur stack a : %d\n",len_stack(*stack_a));
 		if (len_stack(*stack_a) <= 3)
 		{
-			ft_printf(RED"test\n"END);
 			little_sort(stack_a, 'a');
 			break ;
 		}
 		target = find_choice(*stack_a, *stack_b);
+		if (!target)
+		{
+			free_stack_copy(temp_a);
+			return ;
+		}
 		exec_choice(stack_a, stack_b, target);
 		temp_a = temp_a->next;
 	}

@@ -22,7 +22,7 @@ void	swap(t_stack **stack, char c)
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
-	update_index(*stack);
+	//update_index(*stack);
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
@@ -38,7 +38,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		*stack_b = (*stack_b)->next;
 		(*stack_b)->prev = NULL;
 		ft_printf("pa\n");
-		update_two_index(*stack_a, *stack_b);
+		//update_two_index(*stack_a, *stack_b);
 		return ;
 	}
 	temp = *stack_a;
@@ -50,7 +50,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	(*stack_a)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_a;
-	update_two_index(*stack_a, *stack_b);
+	//update_two_index(*stack_a, *stack_b);
 	ft_printf("pa\n");
 }
 
@@ -69,7 +69,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		free(temp);
 		(*stack_a)->prev = NULL;
 		ft_printf("pb\n");
-		update_two_index(*stack_a, *stack_b);
+		//update_two_index(*stack_a, *stack_b);
 		return ;
 	}
 	temp = *stack_b;
@@ -81,7 +81,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_b;
-	update_two_index(*stack_a, *stack_b);
+	//update_two_index(*stack_a, *stack_b);
 	ft_printf("pb\n");
 }
 
@@ -100,7 +100,7 @@ void	rotate(t_stack **stack, char c)
 	}
 	(*stack)->content = temp;
 	*stack = goto_head(*stack);
-	update_index(*stack);
+	//update_index(*stack);
 }
 
 void	reverse_rotate(t_stack **stack, char c)
@@ -119,6 +119,6 @@ void	reverse_rotate(t_stack **stack, char c)
 		*stack = (*stack)->prev;
 	}
 	(*stack)->content = old_last;
-	update_index(*stack);
+	//update_index(*stack);
 }
 
