@@ -23,6 +23,7 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	t_target	*target;
 	t_stack		*temp_a;
+	//t_stack *head;
 	//t_stack		*temp_b;
 
 	temp_a = copy_stack_content(*stack_a);
@@ -50,6 +51,7 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 		exec_choice(stack_a, stack_b, target);
 		temp_a = temp_a->next;
 	}
+	temp_a = goto_head(temp_a);
 	free_stack_copy(temp_a);
 	/* temp_b = *stack_b;
 	while (temp_b)

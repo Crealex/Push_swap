@@ -53,7 +53,7 @@ t_stack	*copy_stack_content(t_stack *stack)
 		new->next = malloc(sizeof(t_stack));
 		if (!new->next)
 		{
-			free_stack_copy(head);
+			//free_stack_copy(head);
 			return (NULL);
 		}
 		new->next->content = temp->content;

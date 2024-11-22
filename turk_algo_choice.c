@@ -31,7 +31,7 @@ int		find_target(int current, t_stack *stack)
 		}
 		temp = temp->next;
 	}
-	free_stack_copy(temp);
+	free_stack_copy(goto_head(temp));
 	if (stack->content > current)
 	{
 		target = show_biggest(stack);
@@ -97,7 +97,7 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	res->target_a = smallest_cost->number;
 	res->target_b = smallest_cost->target;
 	free(current_cost);
-	free_stack_copy(temp_a);
+	free_stack_copy(goto_head(temp_a));
 	free(smallest_cost);
 	return (res);
 }
