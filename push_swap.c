@@ -35,7 +35,7 @@ void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provi
 		read_stack(stack_a, stack_b);
 		temp_a = temp_a->next;
 	}
-	// renvoi: dans la stack_a
+	// renvoi: dans la stack_a enfaite caca boudin au final
 	while (temp_b)
 	{
 		ft_printf("push_a\n");
