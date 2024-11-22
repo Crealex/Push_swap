@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:59:43 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/21 17:46:01 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/22 21:10:13 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	//bignum_algo(&stack_a, &stack_b);
 	//dirty_algo(&stack_a, &stack_b);
 	//little_sort(&stack_a, 'a');
-	//ft_printf(YELLOW"-----FINAL-----");
+	ft_printf(YELLOW"-----FINAL-----\n"END);
 	read_stack(stack_a, stack_b);
 	free_stack_copy(stack_a);
 	free_stack_copy(stack_b);

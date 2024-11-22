@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:40 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/20 17:13:42 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/22 20:51:34 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 		target = find_choice(*stack_a, *stack_b);
 		if (!target)
 		{
-			free_stack_copy(temp_a);
+			free_stack_copy(goto_head(temp_a));
 			return ;
 		}
 		exec_choice(stack_a, stack_b, target);

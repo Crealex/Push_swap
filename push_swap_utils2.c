@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:13:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/20 17:01:28 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/22 21:06:30 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_stack	*copy_stack_content(t_stack *stack)
 		new->next = malloc(sizeof(t_stack));
 		if (!new->next)
 		{
-			//free_stack_copy(head);
+			free_stack_copy(head);
 			return (NULL);
 		}
 		new->next->content = temp->content;
