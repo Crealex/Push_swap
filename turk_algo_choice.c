@@ -91,9 +91,7 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	{
 		current_cost = cost_parsing(stack_a, stack_b, temp_a->content, current_cost);
 		if (current_cost->total_cost < smallest_cost->total_cost)
-		{
 			smallest_cost = current_cost;
-		}
 		temp_a = temp_a->next;
 	}
 	res->target_a = smallest_cost->number;

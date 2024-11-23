@@ -17,7 +17,7 @@ t_stack	*ft_lstnew_pimp(int content)
 {
 	t_stack	*new;
 
-	new = (t_stack *)malloc(sizeof(t_stack));
+	new = (t_stack *)ft_calloc(sizeof(t_stack), 1);
 	if (!new)
 		return (NULL);
 	new->content = content;

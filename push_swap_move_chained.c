@@ -35,10 +35,11 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	{
 		*stack_a = malloc(sizeof(t_stack) * 1);
 		(*stack_a)->content = (*stack_b)->content;
+		temp = *stack_b;
 		*stack_b = (*stack_b)->next;
+		free(temp);
 		(*stack_b)->prev = NULL;
 		ft_printf("pa\n");
-		//update_two_index(*stack_a, *stack_b);
 		return ;
 	}
 	temp = *stack_a;
@@ -50,7 +51,6 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	(*stack_a)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_a;
-	//update_two_index(*stack_a, *stack_b);
 	ft_printf("pa\n");
 }
 
@@ -62,14 +62,13 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	if (!*stack_b)
 	{
-		*stack_b = malloc(sizeof(t_stack) * 1);
+		*stack_b = ft_calloc(sizeof(t_stack), 1);
 		(*stack_b)->content = (*stack_a)->content;
 		temp = *stack_a;
 		*stack_a = (*stack_a)->next;
 		free(temp);
 		(*stack_a)->prev = NULL;
 		ft_printf("pb\n");
-		//update_two_index(*stack_a, *stack_b);
 		return ;
 	}
 	temp = *stack_b;
@@ -81,7 +80,6 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->prev = NULL;
 	if (temp)
 		temp->prev = *stack_b;
-	//update_two_index(*stack_a, *stack_b);
 	ft_printf("pb\n");
 }
 

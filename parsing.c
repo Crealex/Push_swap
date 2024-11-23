@@ -18,7 +18,10 @@ int		duplicate_checker(t_stack *stack, int content)
 	while (stack)
 	{
 		if (stack->content == content)
+		{
+			free_stack_copy(goto_head(stack));
 			return (0);
+		}
 		stack = stack->next;
 	}
 	return (1);
@@ -35,7 +38,10 @@ int		put_in_stack(t_stack **stack, char **res)
 	{
 		content = ft_atoi(res[i]);
 		if (!duplicate_checker(*stack, content))
+		{
+			ft_free_split(res, i);
 			return (0);
+		}
 		temp_a = ft_lstnew_pimp(content);
 		ft_lstadd_back_pimp(stack, temp_a);
 		i++;
@@ -62,7 +68,9 @@ t_stack	*parsing(int argc, char **argv)
 	{
 		res = ft_split(argv[i], ' ');
 		if (!put_in_stack(&stack_a, res))
+		{
 			return (NULL);
+		}
 		i++;
 	}
 	return (stack_a);
