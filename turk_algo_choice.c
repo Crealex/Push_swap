@@ -15,12 +15,11 @@
 int		find_target(int current, t_stack *stack)
 {
 	t_stack *temp;
-	t_stack *target;
+
 	int num;
 	if (!stack)
 		return (0);
 	temp = copy_stack_content(stack);
-	target = stack;
 	while (temp->next)
 	{
 		if ((temp->content < current && temp->next->content < current))
@@ -33,15 +32,9 @@ int		find_target(int current, t_stack *stack)
 	}
 	free_stack_copy(goto_head(temp));
 	if (stack->content > current)
-	{
-		target = show_biggest(stack);
-		return (target->content);
-	}
+		return (show_biggest(stack)->content);
 	else
-	{
-		target = show_biggest(stack);
-		return (target->next->content);
-	}
+		return (show_biggest(stack)->next->content);
 }
 
 int		cost_calculator(t_stack *stack, int target)
@@ -95,7 +88,7 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 		temp_a = temp_a->next;
 	}
 	res->target_a = smallest_cost->number;
-	res->target_b = smallest_cost->target;
+	res->target_b = smallest_cost->target ;
 	free(current_cost);
 	free_stack_copy(goto_head(temp_a));
 	free(smallest_cost);

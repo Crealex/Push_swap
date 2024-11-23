@@ -50,7 +50,7 @@ t_stack	*copy_stack_content(t_stack *stack)
 	temp = stack->next;
 	while (temp)
 	{
-		new->next = malloc(sizeof(t_stack));
+		new->next = ft_calloc(sizeof(t_stack), 1);
 		if (!new->next)
 		{
 			free_stack_copy(head);

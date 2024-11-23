@@ -15,21 +15,24 @@
 int		len_stack(t_stack *stack)
 {
 	int i;
+	t_stack *temp;
 
 	i = 0;
-	if (stack)
+	temp = copy_stack_content(stack);
+	if (temp)
 	{
-		while (stack->prev)
+		while (temp->prev)
 		{
-			stack = stack->prev;
+		temp =temp->prev;
 		}
-		while (stack->next)
+		while (temp->next)
 		{
 			i++;
-			stack = stack->next;
+		temp = temp->next;
 		}
 		i++;
 	}
+	free_stack_copy(goto_head(temp));
 	return (i);
 }
 

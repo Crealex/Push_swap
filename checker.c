@@ -53,12 +53,16 @@ int	num_checker(char **res)
 		{
 			if ((res[i][j] < '0' || res[i][j] > '9') && res[i][0] != '-')
 			{
+				ft_free_split(res, i);
 				return (0);
 			}
 			j++;
 		}
 		if (!int_max_min(res[i]))
-				return (0);
+		{
+			ft_free_split(res, i);
+			return (0);
+		}
 		i++;
 	}
 	ft_free_split(res, i);
@@ -77,7 +81,6 @@ int		checker(int argc, char **argv)
 		res = ft_split(argv[i], ' ');
 		if (!num_checker(res))
 		{
-			ft_free_split(res, i);
 			return (0);
 		}
 		i++;
