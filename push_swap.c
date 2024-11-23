@@ -28,7 +28,7 @@ void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provi
 	push_b(&stack_a, &stack_b);
 	push_b(&stack_a, &stack_b);
 
-	// insertion d'un nombre au bonne endroit de la satck_b (pas sur sur)
+	// insertion d'un nombre au bonne endroit de la satck_b (pas sur)
 	while (temp_a)
 	{
 		insert_in_b(&stack_a, &stack_b);
