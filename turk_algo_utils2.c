@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:23:16 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/22 21:00:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/24 13:06:04 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		cost_compare(t_stack *stack, int target)
 	count_rev = count_rev_rot(temp_rev_rot, target);
 	free_stack_copy(goto_head(temp_rot));
 	free_stack_copy(goto_head(temp_rev_rot));
-	ft_printf("rot : %d\n", count);
-	ft_printf("rev_rot : %d\n", count_rev);
+	//ft_printf("rot : %d\n", count);
+	//ft_printf("rev_rot : %d\n", count_rev);
 	return (count - count_rev);
 }
