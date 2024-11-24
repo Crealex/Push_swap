@@ -39,7 +39,9 @@ int main(int argc, char **argv)
 	//little_sort(&stack_a, 'a');
 	ft_printf(YELLOW"-----FINAL-----\n"END);
 	read_stack(stack_a, stack_b);
-	free_stack_copy(stack_a);
-	free_stack_copy(stack_b);
+	if (stack_a)
+		free_stack_copy(stack_a);
+	if (stack_b)
+		free_stack_copy(stack_b);
 	return (0);
 }
