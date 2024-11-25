@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-t_stack	*show_biggest(t_stack *stack)
+int		show_biggest(t_stack *stack)
 {
-	t_stack	*biggest_temp;
+	int	biggest_temp;
 	int i;
-
-	biggest_temp = stack;
+	stack = goto_head(stack);
+	biggest_temp = stack->content;
 	i = 0;
-	while (len_stack(stack) <= i)
+	while (len_stack(stack) >= (i + 1))
 	{
-		if (stack->content > biggest_temp->content) // a modifier, il faut faire des rotates a la place !!!
-			biggest_temp = stack;
+		if (stack->content > biggest_temp)
+			biggest_temp = stack->content;
 		stack = shadow_rotate(stack);
 		i++;
 	}

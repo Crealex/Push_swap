@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 	//bignum_algo(&stack_a, &stack_b);
 	//dirty_algo(&stack_a, &stack_b);
 	//little_sort(&stack_a, 'a');
+	//biggest_tester(stack_a);
 	ft_printf(YELLOW"-----FINAL-----\n"END);
 	read_stack(stack_a, stack_b);
 	if (stack_a)

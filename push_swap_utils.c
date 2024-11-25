@@ -50,13 +50,16 @@ void	goto_biggest(t_stack **stack, char c)
 	t_stack	*temp;
 
 	biggest_temp = (*stack)->content;
-	temp = *stack;
-	while (temp)
+	temp = copy_stack_content(*stack);
+	while (temp->next)
 	{
 		if (temp->content > biggest_temp)
 			biggest_temp = temp->content;
 		temp = temp->next;
 	}
+	if (temp->content > biggest_temp)
+		biggest_temp = temp->content;
+	free_stack_copy(goto_head(temp));
 	while ((*stack)->content != biggest_temp)
 		rotate(stack, c);
 }

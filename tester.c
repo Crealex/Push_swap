@@ -37,7 +37,7 @@ void	read_one_stack(t_stack *stack)
 		}
 		ft_printf("  %d\n", temp->content);
 	}
-	ft_printf("la stack contient %d chiffre(s)\n", len);
+	ft_printf("la stack contient %d chiffre(s)\n"END, len);
 	free_stack_copy(goto_head(temp));
 }
 
@@ -131,4 +131,9 @@ void	move_teser(t_stack *stack_a, t_stack *stack_b)
 	ft_printf(YELLOW BOLD"FONCTION REVERSE ROTATE (sur stack_a)\n"END);
 	reverse_rotate(&stack_a, 'a');
 	read_stack(stack_a, stack_b);
+}
+
+void	biggest_tester(t_stack *stack)
+{
+	show_biggest(stack);
 }

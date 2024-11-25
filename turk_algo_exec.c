@@ -19,6 +19,8 @@ void	move_stack(t_stack **stack, int target, char c)
 
 	temp = *stack;
 	choice = cost_compare(temp, target);
+	//ft_printf(PURPLE"stack %c : \n", c);
+	//read_one_stack(*stack);
 	if (choice > 0)
 	{
 		while (*stack)
@@ -44,5 +46,12 @@ void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 	move_stack(stack_a, choice->target_a, 'a');
 	move_stack(stack_b, choice->target_b, 'b');
 	free(choice);
-	push_b(stack_a, stack_b);
+	//ft_printf("smallest : %d\n", is_smallest(*stack_b, (*stack_a)->content));
+	if (is_smallest(*stack_b, (*stack_a)->content))
+	{
+		push_b(stack_a, stack_b);
+		reverse_rotate(stack_b, 'b');
+	}
+	else
+		push_b(stack_a, stack_b);
 }

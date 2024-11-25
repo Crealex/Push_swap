@@ -76,3 +76,27 @@ void	free_stack_copy(t_stack *stack)
 		stack = temp;
 	}
 }
+
+int		is_smallest(t_stack *stack, int content)
+{
+	//t_stack *temp;
+
+	//temp = copy_stack_content(stack);
+	//temp = goto_head(temp);
+	//read_one_stack(stack);
+	//ft_printf("content : %d\n", content);
+	while (stack->next)
+	{
+		if (stack->content < content)
+		{
+			return (0);
+		}
+		stack = stack->next;
+	}
+	if (stack->content < content)
+	{
+		return (0);
+	}
+	goto_head(stack);
+	return (1);
+}

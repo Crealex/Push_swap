@@ -60,8 +60,11 @@ void	reverse_rotate(t_stack **stack, char c);
 // libft_pimp.c
 t_stack	*ft_lstnew_pimp(int content);
 void	ft_lstadd_back_pimp(t_stack **lst, t_stack *new);
+// tester.c
 void	move_teser(t_stack *stack_a, t_stack *stack_b); // test des moves et du parsing
 void	read_stack(t_stack *stack_a, t_stack *stack_b); // Impresssion des stack
+void	read_one_stack(t_stack *stack);
+void	biggest_tester(t_stack *stack);
 // push_swap_utils.c
 int		len_stack(t_stack *stack); // calcule de la longeur de la liste
 t_stack	*goto_head(t_stack *stack); //retour au premier element de la liste
@@ -73,14 +76,17 @@ void	update_index(t_stack *stack);
 void	update_two_index(t_stack *stack_a, t_stack *stack_b);
 t_stack	*copy_stack_content(t_stack *stack);
 void	free_stack_copy(t_stack *stack);
+int		is_smallest(t_stack *stack, int content);
 // turk_algo_utils.c
-t_stack		*show_biggest(t_stack *stack);
+int		show_biggest(t_stack *stack);
 t_stack	*shadow_rotate(t_stack *stack);
 t_stack	*shadow_reverse_rotate(t_stack *stack);
 int		count_rot(t_stack *stack, int target);
 int		count_rev_rot(t_stack *stack,int  target);
 // turk_algo_utils2.c
 int		cost_compare(t_stack *stack, int target);
+t_stack		*shadow_goto_biggest(t_stack *stack);
+int		show_smallest(t_stack *stack);
 // turk algo
 t_target	*find_choice(t_stack *stack_a, t_stack *stack_b);
 void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice);
