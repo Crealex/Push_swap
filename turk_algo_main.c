@@ -62,9 +62,5 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 	}
 	free_stack_copy(goto_head(temp_a));
 	goto_biggest(stack_b, 'b');
-	/* temp_b = *stack_b;
-	while (temp_b)
-	{
-		put_in_a(stack_a, stack_b);
-	} */
+	repush_in_a(stack_a, stack_b);
 }

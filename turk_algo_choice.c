@@ -21,22 +21,17 @@ int		find_target(int current, t_stack *stack)
 		return (0);
 	temp = copy_stack_content(stack);
 	temp = shadow_goto_biggest(temp);
-	temp = goto_head(temp);
 	while (temp->next)
 	{
 		if ((temp->content > current && temp->next->content < current))
 		{
 			num = temp->next->content;
 			free_stack_copy(goto_head(temp));
-			ft_printf("current when into 2 numbers : %d\n", current);
 			return (num);
 		}
 		temp = temp->next;
 	}
 	free_stack_copy(goto_head(temp));
-	//tester quel current amene ici et peut etre quel content
-	ft_printf("current when show biggest: %d\n", current);
-	ft_printf("boggest : %d", show_biggest(stack));
 	return (show_biggest(stack));
 }
 
@@ -49,10 +44,10 @@ int		find_target2(int current, t_stack *stack)
 
 	biggest = show_biggest(stack);
 	smallest = show_smallest(stack);
-	if (current > biggest || current < smallest) // si min rotate plus loin
+	if (current > biggest || current < smallest)
 		return (biggest);
 	temp = copy_stack_content(stack);
-	temp = shadow_goto_biggest(temp); // ranger la pile par ordre decroissant
+	temp = shadow_goto_biggest(temp);
 	while (temp->next)
 	{
 		if (temp->content < current)
@@ -128,10 +123,7 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 		temp_a = temp_a->next;
 	}
 	res->target_a = smallest_cost->number;
-	res->target_b = smallest_cost->target ;
-	ft_printf("choice : %d\n", smallest_cost->number);
-	ft_printf("target : %d\n", smallest_cost->target);
-	read_stack(stack_a, stack_b);
+	res->target_b = smallest_cost->target;
 	free_stack_copy(goto_head(temp_a));
 	free(smallest_cost);
 	return (res);

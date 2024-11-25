@@ -96,5 +96,7 @@ void	first_phase(t_stack *stack_a, t_stack *stack_b);
 void	dirty_algo(t_stack **stack_a, t_stack **stack_b);
 void	bignum_algo(t_stack **stack_a, t_stack **stack_b);
 void	little_sort(t_stack **stack, char c);
+// repush_in_a
+void	repush_in_a(t_stack **stack_a, t_stack **stack_b);
 
 #endif

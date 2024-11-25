@@ -31,15 +31,15 @@ int main(int argc, char **argv)
 	}
 	//ft_printf(YELLOW"-----DEBUT-----\n\n");
 	//update_index(stack_a);
-	read_stack(stack_a, stack_b);
+	//read_stack(stack_a, stack_b);
 	//move_teser(stack_a, stack_b);
 	turk_sort(&stack_a, &stack_b);
 	//bignum_algo(&stack_a, &stack_b);
 	//dirty_algo(&stack_a, &stack_b);
 	//little_sort(&stack_a, 'a');
 	//biggest_tester(stack_a);
-	ft_printf(YELLOW"-----FINAL-----\n"END);
-	read_stack(stack_a, stack_b);
+	//ft_printf(YELLOW"-----FINAL-----\n"END);
+	//read_stack(stack_a, stack_b);
 	if (stack_a)
 		free_stack_copy(stack_a);
 	if (stack_b)
