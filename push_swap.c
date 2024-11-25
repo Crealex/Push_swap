@@ -14,127 +14,30 @@
 
 #include "push_swap.h"
 
-void	insert_in_b(t_stack **stack_a, t_stack **stack_b);
+#include "push_swap.h"
 
-void	first_phase(t_stack *stack_a, t_stack *stack_b) // nom de la fonction provisoire
+int	main(int argc, char **argv)
 {
-	t_stack *temp_a;
-	t_stack	*temp_b;
-	//premiere etape :
-	ft_printf(YELLOW "AVANT TOUTE MANIP\n");
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (1);
+	stack_a = parsing(argc, argv);
+	if (!stack_a)
+	{
+		ft_putendl_fd(RED"Erreur, arguments invalide\n"END, 2);
+		return (1);
+	}
 	read_stack(stack_a, stack_b);
-	temp_a = stack_a;
-	temp_b = stack_b;
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-
-	// insertion d'un nombre au bonne endroit de la satck_b (pas sur)
-	while (temp_a)
-	{
-		insert_in_b(&stack_a, &stack_b);
-		read_stack(stack_a, stack_b);
-		temp_a = temp_a->next;
-	}
-	// renvoi: dans la stack_a enfaite caca boudin au finall
-	while (temp_b)
-	{
-		ft_printf("push_a\n");
-		push_a(&stack_a, &stack_b);
-		temp_b = temp_b->next;
-	}
-	stack_b = goto_head(stack_b);
+	turk_sort(&stack_a, &stack_b);
+	ft_printf(YELLOW"-----FINAL-----\n"END);
 	read_stack(stack_a, stack_b);
-	return ;
-}
-
-
-void	insert_max(t_stack	**stack_a, t_stack **stack_b)
-{
-	int temp_max;
-
-	temp_max = INT_MIN;
-	while ((*stack_b)->prev)
-		*stack_b = (*stack_b)->prev;
-	while (*stack_b)
-	{
-		if ((*stack_b)->content >= temp_max)
-		{
-			if (temp_max == (*stack_b)->content)
-				break;
-			temp_max = (*stack_b)->content;
-		}
-		*stack_b = (*stack_b)->next;
-	}
-	push_b(stack_a, stack_b);
-	read_stack(*stack_a, *stack_b);
-	return ;
-}
-
-void	insert_min(t_stack **stack_a, t_stack **stack_b)
-{
-	insert_max(stack_a, stack_b);
-	rotate(stack_b, 'b');
-}
-
-void	insert_middle(t_stack **stack_a, t_stack **stack_b)
-{
-	// IMPOSSIBLE DE DEPLACER CE PUTAIN DE TEMP_A
-	*stack_a = goto_head(*stack_a);
-	while ((*stack_a)->next)
-	{
-		if ((*stack_a)->content < (*stack_b)->content && (*stack_a)->content > (*stack_b)->next->content)
-		{
-			rotate(stack_b, 'b');
-			push_b(stack_a, stack_b);
-			break ;
-		}
-		else
-		{
-			rotate(stack_b, 'b');
-		}
-		(*stack_a) = (*stack_a)->next;
-		read_stack(*stack_a, *stack_b);
-	}
-	*stack_a = goto_head(*stack_a);
-}
-
-void	insert_in_b(t_stack **stack_a, t_stack **stack_b)
-{
-	static int max_num;
-	static int min_num;
-	printf("Content de a : %d\n", (*stack_a)->content);
-	if ((*stack_a)->next && !max_num && !min_num)
-	{
-		if ((*stack_a)->content > (*stack_a)->next->content)
-		{
-			max_num = (*stack_a)->content;
-			min_num = (*stack_a)->next->content;
-		}
-		else
-		{
-			max_num = (*stack_a)->next->content;
-			min_num = (*stack_a)->content;
-		}
-	}
-	else if (!max_num && !min_num)
-	{
-		max_num = (*stack_a)->content;
-		min_num = INT_MIN;
-	}
-	ft_printf("TESSSSSST : %d\n", max_num);
-	if ((*stack_a)->content > max_num)
-	{
-		ft_printf("MAXXXX\n");
-		max_num = (*stack_a)->content;
-		insert_max(stack_a, stack_b);
-	}
-	else if ((*stack_a)->content < min_num)
-	{
-		ft_printf("MINNNNN\n");
-		min_num = (*stack_a)->content;
-		insert_min(stack_a, stack_b);
-	}
-	else
-		insert_middle(stack_a, stack_b);
-	ft_printf("MIDDDDDDD:E and max num : %d\n", max_num);
+	if (stack_a)
+		free_stack_copy(stack_a);
+	if (stack_b)
+		free_stack_copy(stack_b);
+	return (0);
 }

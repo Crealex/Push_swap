@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int		find_target(int current, t_stack *stack)
+int	find_target(int current, t_stack *stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
+	int		num;
 
-	int num;
 	if (!stack)
 		return (0);
 	temp = copy_stack_content(stack);
@@ -35,35 +35,9 @@ int		find_target(int current, t_stack *stack)
 	return (show_biggest(stack));
 }
 
-int		find_target2(int current, t_stack *stack)
+int	cost_calculator(t_stack *stack, int target)
 {
-	int biggest;
-	int smallest;
-	int num;
-	t_stack *temp;
-
-	biggest = show_biggest(stack);
-	smallest = show_smallest(stack);
-	if (current > biggest || current < smallest)
-		return (biggest);
-	temp = copy_stack_content(stack);
-	temp = shadow_goto_biggest(temp);
-	while (temp->next)
-	{
-		if (temp->content < current)
-		{
-			num = temp->next->content;
-			free_stack_copy(temp);
-			return (num);
-		}
-		temp = temp->next;
-	}
-	return (0);
-}
-
-int		cost_calculator(t_stack *stack, int target)
-{
-	int choice;
+	int	choice;
 
 	choice = 0;
 	choice = cost_compare(stack, target);
@@ -76,17 +50,13 @@ int		cost_calculator(t_stack *stack, int target)
 t_cost	*cost_parsing(t_stack *stack_a, t_stack *stack_b, int current_num)
 {
 	int		target;
-	t_cost *res;
+	t_cost	*res;
 
 	res = malloc(sizeof(t_cost) * 1);
 	res->number = current_num;
-	//1. Trouver la position cible de chaque element.
 	target = find_target(current_num, stack_b);
-	//2. Calculer le couts des rotations stack_a.
 	res->cost_a = cost_calculator(stack_a, current_num);
-	//3. Calculer le couts des rotations stack_b.
 	res->cost_b = cost_calculator(stack_b, target);
-	//4. Cout total
 	res->total_cost = res->cost_a + res->cost_b;
 	res->target = target;
 	return (res);
@@ -103,10 +73,10 @@ void	copy_cost(t_cost *smallest_cost, t_cost *current_cost)
 
 t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 {
-	t_cost	*smallest_cost;
-	t_cost	*current_cost;
-	t_target *res;
-	t_stack	*temp_a;
+	t_cost		*smallest_cost;
+	t_cost		*current_cost;
+	t_target	*res;
+	t_stack		*temp_a;
 
 	temp_a = copy_stack_content(stack_a);
 	current_cost = NULL;

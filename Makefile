@@ -1,9 +1,9 @@
 NAME	=	push_swap
 LIBFT	=	libft/libft.a
-SRCS	=	push_swap_move_chained.c main.c libft_pimp.c tester.c push_swap_utils.c \
-			parsing.c checker.c dirty_algo.c bignum_algo.c push_swap_utils2.c \
+SRCS	=	push_swap_move_chained.c libft_pimp.c tester.c push_swap_utils.c \
+			parsing.c checker.c push_swap_utils2.c \
 			push_swap_double_move_chained.c little_sort_algo.c turk_algo_choice.c turk_algo_utils2.c \
-			turk_algo_utils.c turk_algo_main.c turk_algo_exec.c turk_algo_repush_in_a.c#push_swap.c
+			turk_algo_utils.c turk_algo_main.c turk_algo_exec.c turk_algo_repush_in_a.c push_swap.c
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 CC		=	gcc
 CFLAGS	=	-Werror -Wextra -Wall

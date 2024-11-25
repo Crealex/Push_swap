@@ -12,39 +12,13 @@
 
 #include "push_swap.h"
 
-/* void	put_in_a(t_stack **stack_a, t_stack **stack_b)
+void	push_in_b(t_stack **stack_a, t_stack **stack_b)
 {
-	//1. Trouver ou placer l' element.
-	//2. move_stack la stack A pour la mettre bien.
-	//3. push dans la stack A
-} */
-
-void	turk_sort(t_stack **stack_a, t_stack **stack_b)
-{
+	t_stack		*temp;
 	t_target	*target;
-	t_stack		*temp_a;
-	//t_stack *head;
-	//t_stack		*temp_b;
 
-	if (is_sorted(*stack_a))
-	{
-		exit (EXIT_SUCCESS);
-	}
-	push_b(stack_a, stack_b);
-	if (len_stack(*stack_a) <= 3)
-	{
-		little_sort(stack_a, 'a');
-		//truc a faire pour trier le dernier element !!!!
-		exit (EXIT_SUCCESS);
-	}
-	push_b(stack_a, stack_b);
-	temp_a = copy_stack_content(*stack_a);
-	*stack_b = goto_head(*stack_b);
-	if ((*stack_b)->content < (*stack_b)->next->content)
-	{
-		swap(stack_b, 'b');;
-	}
-	while (temp_a)
+	temp = copy_stack_content(*stack_a);
+	while (temp)
 	{
 		if (len_stack(*stack_a) <= 3)
 		{
@@ -54,13 +28,36 @@ void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 		target = find_choice(*stack_a, *stack_b);
 		if (!target)
 		{
-			free_stack_copy(goto_head(temp_a));
+			free_stack_copy(goto_head(temp));
 			return ;
 		}
 		exec_choice(stack_a, stack_b, target);
-		temp_a = temp_a->next;
+		temp = temp->next;
 	}
-	free_stack_copy(goto_head(temp_a));
+	free_stack_copy(goto_head(temp));
+	return ;
+}
+
+void	turk_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	if (is_sorted(*stack_a))
+	{
+		exit (EXIT_SUCCESS);
+	}
+	push_b(stack_a, stack_b);
+	if (len_stack(*stack_a) <= 3)
+	{
+		little_sort(stack_a, 'a');
+		repush_in_a(stack_a, stack_b);
+		exit (EXIT_SUCCESS);
+	}
+	push_b(stack_a, stack_b);
+	*stack_b = goto_head(*stack_b);
+	if ((*stack_b)->content < (*stack_b)->next->content)
+	{
+		swap(stack_b, 'b');
+	}
+	push_in_b(stack_a, stack_b);
 	goto_biggest(stack_b, 'b');
 	repush_in_a(stack_a, stack_b);
 }
