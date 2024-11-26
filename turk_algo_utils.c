@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:27:50 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/24 13:09:09 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/26 22:14:31 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ int		show_biggest(t_stack *stack)
 {
 	int	biggest_temp;
 	int i;
-	stack = goto_head(stack);
-	biggest_temp = stack->content;
+	t_stack *temp;
+
+	temp = copy_stack_content(stack);
+	temp = goto_head(temp);
+	biggest_temp = temp->content;
 	i = 0;
-	while (len_stack(stack) >= (i + 1))
+	while (len_stack(temp) >= (i + 1))
 	{
-		if (stack->content > biggest_temp)
-			biggest_temp = stack->content;
-		stack = shadow_rotate(stack);
+		if (temp->content > biggest_temp)
+			biggest_temp = temp->content;
+		temp = shadow_rotate(temp);
 		i++;
 	}
 	return (biggest_temp);

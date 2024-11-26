@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_algo_choice.c                                 :+:      :+:    :+:   */
+/*   turk_algo_choice_v2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/26 22:04:21 by atomasi          ###   ########.fr       */
+/*   Created: 2024/11/26 21:38:24 by atomasi           #+#    #+#             */
+/*   Updated: 2024/11/26 22:04:26 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 int	find_target(int current, t_stack *stack)
 {
-	t_stack	*temp;
 	int		num;
 
 	if (!stack)
 		return (0);
-	temp = copy_stack_content(stack);
-	while (temp->next)
+	while (stack->next)
 	{
-		if ((temp->content > current && temp->next->content < current))
+		if ((stack->content > current && stack->next->content < current))
 		{
-			num = temp->next->content;
-			free_stack_copy(goto_head(temp));
+			num = stack->next->content;
 			return (num);
 		}
-		temp = temp->next;
+		stack = stack->next;
 	}
-	temp = shadow_reverse_rotate(temp);
-	if (temp->content > current && temp->next->content < current)
+	stack = shadow_reverse_rotate(stack);
+	if (stack->content > current && stack->next->content < current)
 	{
-			num = temp->next->content;
-			free_stack_copy(goto_head(temp));
+			stack = shadow_rotate(stack);
+			num = stack->next->content;
 			return (num);
 	}
-	free_stack_copy(goto_head(temp));
 	return (show_biggest(stack));
 }
 
@@ -98,16 +93,18 @@ t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 	t_cost		*current_cost;
 	t_target	*res;
 	t_stack		*temp_a;
+	t_stack		*temp_b;
 
 	temp_a = copy_stack_content(stack_a);
+	temp_b = copy_stack_content(stack_b);
 	current_cost = NULL;
 	smallest_cost = NULL;
-	smallest_cost = cost_parsing(stack_a, stack_b, temp_a->content);
+	smallest_cost = cost_parsing(temp_a, temp_b, temp_a->content);
 	res = malloc(sizeof(t_target) * 1);
 	while (temp_a->next)
 	{
 		temp_a = temp_a->next;
-		current_cost = cost_parsing(stack_a, stack_b, temp_a->content);
+		current_cost = cost_parsing(goto_head(temp_a), temp_b, temp_a->content);
 		if (current_cost->total_cost < smallest_cost->total_cost)
 			copy_cost(smallest_cost, current_cost);
 		free(current_cost);

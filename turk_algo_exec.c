@@ -39,11 +39,11 @@ void	double_move_stack(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 	if (choice->move_a == -1)
 	{
 		while (*stack_a && *stack_b)
-			{
-				if ((*stack_a)->content == choice->target_a || (*stack_b)->content == choice->target_b)
-					return ;
-				double_reverse_rotate(stack_a, stack_b);
-			}
+		{
+			if ((*stack_a)->content == choice->target_a || (*stack_b)->content == choice->target_b)
+				return ;
+			double_reverse_rotate(stack_a, stack_b);
+		}
 	}
 	else
 	{
@@ -58,6 +58,10 @@ void	double_move_stack(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 
 void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 {
+	if (choice->move_a >= 0)
+		choice->move_a = 1;
+	if (choice->move_b >= 0)
+		choice->move_b = 1;
 	if (choice->move_a == choice->move_b)
 	{
 		double_move_stack(stack_a, stack_b, choice);
