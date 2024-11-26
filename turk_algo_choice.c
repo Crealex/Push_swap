@@ -70,7 +70,7 @@ void	copy_cost(t_cost *smallest_cost, t_cost *current_cost)
 	smallest_cost->target = current_cost->target;
 	smallest_cost->total_cost = current_cost->total_cost;
 }
-
+// TROUVER OU MA STACK A SE MODIFIFE!!!!!!!
 t_target	*find_choice(t_stack *stack_a, t_stack *stack_b)
 {
 	t_cost		*smallest_cost;

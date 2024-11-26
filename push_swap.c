@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// !!!A METTRE AU PROPRE!!!
-
-#include "push_swap.h"
-
 #include "push_swap.h"
 
 int	main(int argc, char **argv)
@@ -31,10 +27,11 @@ int	main(int argc, char **argv)
 		ft_putendl_fd(RED"Erreur, arguments invalide\n"END, 2);
 		return (1);
 	}
-	read_stack(stack_a, stack_b);
+	//ft_printf("--------DEBUT-------");
+	//read_stack(stack_a, stack_b);
 	turk_sort(&stack_a, &stack_b);
-	ft_printf(YELLOW"-----FINAL-----\n"END);
-	read_stack(stack_a, stack_b);
+	//ft_printf(YELLOW"-----FINAL-----\n"END);
+	//read_stack(stack_a, stack_b);
 	if (stack_a)
 		free_stack_copy(stack_a);
 	if (stack_b)

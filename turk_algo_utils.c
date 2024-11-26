@@ -71,31 +71,41 @@ t_stack	*shadow_reverse_rotate(t_stack *stack)
 int		count_rot(t_stack *stack, int target)
 {
 	int count;
+	t_stack *temp;
 
 	count = 0;
-	while (stack)
+	temp = copy_stack_content(stack);
+	while (temp)
 	{
-		if (stack->content == target)
+		if (temp->content == target)
+		{
+			free_stack_copy(temp);
 			return (count);
-		stack = shadow_rotate(stack);
+		}
+		temp = shadow_rotate(temp);
 		count++;
 	}
+	free_stack_copy(temp);
 	return (0);
 }
 
-int		count_rev_rot(t_stack *stack,int  target)
+int		count_rev_rot(t_stack *stack, int  target)
 {
 	int count;
+	t_stack *temp;
 
 	count = 0;
-	while (stack)
+	temp = copy_stack_content(stack);
+	while (temp)
 	{
-		if (stack->content == target)
+		if (temp->content == target)
 		{
+			free_stack_copy(temp);
 			return (count);
 		}
-		stack = shadow_reverse_rotate(stack);
+		temp = shadow_reverse_rotate(temp);
 		count++;
 	}
+	free_stack_copy(temp);
 	return (0);
 }

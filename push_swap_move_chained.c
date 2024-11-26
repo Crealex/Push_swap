@@ -16,9 +16,9 @@ void	swap(t_stack **stack, char c)
 {
 	int temp;
 
-	print_move(c, 's');
 	if (!*stack || !(*stack)->next)
 		return ;
+	print_move(c, 's');
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
@@ -87,9 +87,9 @@ void	rotate(t_stack **stack, char c)
 {
 	int		temp;
 
-	print_move(c, 'r');
 	if (!*stack)
 		return ;
+	print_move(c, 'r');
 	temp = (*stack)->content;
 	while((*stack)->next)
 	{
@@ -105,9 +105,9 @@ void	reverse_rotate(t_stack **stack, char c)
 {
 	int old_last;
 
-	print_move(c, 'v');
 	if (!*stack)
 		return;
+	print_move(c, 'v');
 	while ((*stack)->next)
 		*stack = (*stack)->next;
 	old_last = (*stack)->content;
