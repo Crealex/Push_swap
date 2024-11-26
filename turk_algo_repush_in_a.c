@@ -23,31 +23,12 @@ void	push_in_a(t_stack **stack_a, t_stack **stack_b, int limit)
 
 void	move_stack_a(t_stack **stack, int target, char c)
 {
-	int choice;
-	t_stack *temp;
-
-	temp = *stack;
-	choice = cost_compare(temp, target);
-	//ft_printf(PURPLE"stack %c : \n", c);
-	//read_one_stack(*stack);
-	if (choice > 0)
-	{
 		while (*stack)
 		{
 			if ((*stack)->content == target)
 				return ;
 			reverse_rotate(stack, c);
 		}
-	}
-	else
-	{
-		while (*stack)
-		{
-			if ((*stack)->content == target)
-				return ;
-			rotate(stack, c);
-		}
-	}
 }
 
 void	repush_in_a(t_stack **stack_a, t_stack **stack_b)

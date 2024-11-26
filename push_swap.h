@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/20 17:02:11 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/26 16:45:36 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_cost
 {
 	int		cost_a;     // Coût pour positionner dans la stack A
 	int		cost_b;     // Coût pour positionner dans la stack B
+	int		move_a;		// Choix du move de la stack a
+	int		move_b;		// Choix du move de la stack b
 	int		total_cost; // Coût total
 	int		number;     // Le nombre concerné
 	int		target;		// Le nombre cible
@@ -47,6 +49,8 @@ typedef struct s_target
 {
 	int		target_a;     // cible a atteidre dans la stack A
 	int		target_b;     // cible a atteindre dans la stack B
+	int		move_a;		  // choix du move stack a
+	int		move_b;		  // choix du move stack b
 }	t_target;
 // parsing and checker
 t_stack	*parsing(int argc, char **argv);
@@ -57,6 +61,9 @@ void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 void	rotate(t_stack **stack, char c);
 void	reverse_rotate(t_stack **stack, char c);
+// double move
+void	double_rotate(t_stack **stack_a, t_stack **stack_b);
+void	double_reverse_rotate(t_stack **stack_a, t_stack **stack_b);
 // libft_pimp.c
 t_stack	*ft_lstnew_pimp(int content);
 void	ft_lstadd_back_pimp(t_stack **lst, t_stack *new);
@@ -98,5 +105,7 @@ void	bignum_algo(t_stack **stack_a, t_stack **stack_b);
 void	little_sort(t_stack **stack, char c);
 // repush_in_a
 void	repush_in_a(t_stack **stack_a, t_stack **stack_b);
+// opti
+int cost_choice(t_stack *stack, int target);
 
 #endif

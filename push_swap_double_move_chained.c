@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:45:11 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 14:18:58 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/26 16:48:43 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	double_rotate(t_stack **stack_a, t_stack **stack_b)
 {
 	int	temp;
 
-	ft_printf("rr\n");
 	if (!*stack_a || !*stack_b)
 		return;
+	ft_printf("rr\n");
 	temp = (*stack_a)->content;
 	while((*stack_a)->next)
 	{
@@ -58,9 +58,9 @@ void	double_reverse_rotate(t_stack **stack_a, t_stack **stack_b)
 {
 	int old_last;
 
-	ft_printf("rrr\n");
 	if (!*stack_a || !*stack_b)
 		return ;
+	ft_printf("rrr\n");
 	while ((*stack_a)->next)
 		*stack_a = (*stack_a)->next;
 	old_last = (*stack_a)->content;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/18 22:12:28 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/26 15:34:18 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ int	main(int argc, char **argv)
 	stack_a = parsing(argc, argv);
 	if (!stack_a)
 	{
-		ft_putendl_fd(RED"Erreur, arguments invalide\n"END, 2);
+		ft_putendl_fd(RED"Erreur, argument(s) invalide(s)\n"END, 2);
 		return (1);
 	}
 	//ft_printf("--------DEBUT-------");
 	//read_stack(stack_a, stack_b);
-	turk_sort(&stack_a, &stack_b);
+	if (len_stack(stack_a) == 3)
+		little_sort(&stack_a, 'a');
+	else
+		turk_sort(&stack_a, &stack_b);
+	//bignum_algo(&stack_a, &stack_b);
 	//ft_printf(YELLOW"-----FINAL-----\n"END);
 	//read_stack(stack_a, stack_b);
 	if (stack_a)

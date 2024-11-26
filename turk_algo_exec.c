@@ -3,25 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_exec.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:52:59 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/20 17:06:35 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/26 16:50:32 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_stack(t_stack **stack, int target, char c)
+void	move_stack(t_stack **stack, int target,int choice, char c)
 {
-	int choice;
-	t_stack *temp;
-
-	temp = *stack;
-	choice = cost_compare(temp, target);
-	//ft_printf(PURPLE"stack %c : \n", c);
-	//read_one_stack(*stack);
-	if (choice > 0)
+	if (choice == -1)
 	{
 		while (*stack)
 		{
@@ -41,10 +34,38 @@ void	move_stack(t_stack **stack, int target, char c)
 	}
 }
 
+void	double_move_stack(t_stack **stack_a, t_stack **stack_b, t_target *choice)
+{
+	if (choice->move_a == -1)
+	{
+		while (*stack_a && *stack_b)
+			{
+				if ((*stack_a)->content == choice->target_a || (*stack_b)->content == choice->target_b)
+					return ;
+				double_reverse_rotate(stack_a, stack_b);
+			}
+	}
+	else
+	{
+		while (*stack_a && *stack_b)
+		{
+			if ((*stack_a)->content == choice->target_a || (*stack_b)->content == choice->target_b)
+				return ;
+			double_rotate(stack_a, stack_b);
+		}
+	}
+}
+
 void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 {
-	move_stack(stack_a, choice->target_a, 'a');
-	move_stack(stack_b, choice->target_b, 'b');
+	if (choice->move_a == choice->move_b)
+	{
+		double_move_stack(stack_a, stack_b, choice);
+	}
+	if ((*stack_a)->content != choice->target_a)
+		move_stack(stack_a, choice->target_a, choice->move_a, 'a');
+	if ((*stack_b)->content != choice->target_b)
+		move_stack(stack_b, choice->target_b, choice->move_b, 'b');
 	free(choice);
 	//ft_printf("smallest : %d\n", is_smallest(*stack_b, (*stack_a)->content));
 	if (is_smallest(*stack_b, (*stack_a)->content))
