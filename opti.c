@@ -22,5 +22,34 @@ int cost_choice(t_stack *stack, int target)
 	if (count > (len / 2))
 		return (-1);
 	else
-		return (1);
+		return (count);
+}
+
+int	find_target_v2(int current, t_stack *stack)
+{
+	t_stack	*temp;
+	int		num;
+
+	if (!stack)
+		return (0);
+	temp = copy_stack_content(stack);
+	while (temp->next)
+	{
+		if ((temp->content > current && temp->next->content < current))
+		{
+			num = temp->next->content;
+			free_stack_copy(goto_head(temp));
+			return (num);
+		}
+		temp = temp->next;
+	}
+	temp = shadow_reverse_rotate(temp);
+	if (temp->content > current && temp->next->content < current)
+	{
+			num = temp->next->content;
+			free_stack_copy(goto_head(temp));
+			return (num);
+	}
+	free_stack_copy(goto_head(temp));
+	return (show_biggest(stack));
 }

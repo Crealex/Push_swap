@@ -107,5 +107,6 @@ void	little_sort(t_stack **stack, char c);
 void	repush_in_a(t_stack **stack_a, t_stack **stack_b);
 // opti
 int cost_choice(t_stack *stack, int target);
+int	find_target_v2(int current, t_stack *stack);
 
 #endif
