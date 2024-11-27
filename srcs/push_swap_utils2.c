@@ -6,34 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:13:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 13:37:52 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:11:15 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/* void	update_index(t_stack *stack)
-{
-	int i;
-	t_stack *current;
-
-	current = stack;
-	i = 0;
-	while (current)
-	{
-		current->index = i;
-		i++;
-		current = current->next;
-	}
-} */
-
-void	update_two_index(t_stack *stack_a, t_stack *stack_b)
-{
-	if (!stack_a || !stack_b)
-		return;
-	//update_index(stack_a);
-	//update_index(stack_b);
-}
 
 t_stack	*copy_stack_content(t_stack *stack)
 {
@@ -53,8 +30,7 @@ t_stack	*copy_stack_content(t_stack *stack)
 		new->next = ft_calloc(sizeof(t_stack), 1);
 		if (!new->next)
 		{
-			free_stack_copy(head);
-			return (NULL);
+			return (free_stack_copy(head), NULL);
 		}
 		new->next->content = temp->content;
 		new->next->prev = new;
@@ -77,14 +53,8 @@ void	free_stack_copy(t_stack *stack)
 	}
 }
 
-int		is_smallest(t_stack *stack, int content)
+int	is_smallest(t_stack *stack, int content)
 {
-	//t_stack *temp;
-
-	//temp = copy_stack_content(stack);
-	//temp = goto_head(temp);
-	//read_one_stack(stack);
-	//ft_printf("content : %d\n", content);
 	while (stack->next)
 	{
 		if (stack->content < content)

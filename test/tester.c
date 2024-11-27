@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 21:23:07 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/27 13:38:00 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:57:33 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	read_one_stack(t_stack *stack)
 {
-	int len;
-	t_stack *temp;
+	int		len;
+	t_stack	*temp;
 
 	temp = copy_stack_content(stack);
 	if (temp)
@@ -43,10 +43,10 @@ void	read_one_stack(t_stack *stack)
 
 void	read_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	int len_a;
-	int len_b;
-	t_stack *temp_a;
-	t_stack *temp_b;
+	int		len_a;
+	int		len_b;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
 
 	temp_a = copy_stack_content(stack_a);
 	len_b = 0;

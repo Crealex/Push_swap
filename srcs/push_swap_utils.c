@@ -6,16 +6,16 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:17 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 13:37:47 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:10:26 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		len_stack(t_stack *stack)
+int	len_stack(t_stack *stack)
 {
-	int i;
-	t_stack *temp;
+	int		i;
+	t_stack	*temp;
 
 	i = 0;
 	temp = copy_stack_content(stack);
@@ -23,12 +23,12 @@ int		len_stack(t_stack *stack)
 	{
 		while (temp->prev)
 		{
-		temp =temp->prev;
+			temp = temp->prev;
 		}
 		while (temp->next)
 		{
 			i++;
-		temp = temp->next;
+			temp = temp->next;
 		}
 		i++;
 	}
@@ -44,6 +44,7 @@ t_stack	*goto_head(t_stack *stack)
 	}
 	return (stack);
 }
+
 void	goto_biggest(t_stack **stack, char c)
 {
 	int		biggest_temp;
@@ -64,9 +65,9 @@ void	goto_biggest(t_stack **stack, char c)
 		rotate(stack, c);
 }
 
-int		is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = stack;
 	while (temp->next)

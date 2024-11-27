@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/27 13:37:42 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:07:53 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap(t_stack **stack, char c)
 {
-	int temp;
+	int	temp;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -22,7 +22,6 @@ void	swap(t_stack **stack, char c)
 	temp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = temp;
-	//update_index(*stack);
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
@@ -85,38 +84,35 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 
 void	rotate(t_stack **stack, char c)
 {
-	int		temp;
+	int	temp;
 
 	if (!*stack)
 		return ;
 	print_move(c, 'r');
 	temp = (*stack)->content;
-	while((*stack)->next)
+	while ((*stack)->next)
 	{
 		(*stack) = (*stack)->next;
 		(*stack)->prev->content = (*stack)->content;
 	}
 	(*stack)->content = temp;
 	*stack = goto_head(*stack);
-	//update_index(*stack);
 }
 
 void	reverse_rotate(t_stack **stack, char c)
 {
-	int old_last;
+	int	old_last;
 
 	if (!*stack)
-		return;
+		return ;
 	print_move(c, 'v');
 	while ((*stack)->next)
 		*stack = (*stack)->next;
 	old_last = (*stack)->content;
-	while((*stack)->prev)
+	while ((*stack)->prev)
 	{
 		(*stack)->content = (*stack)->prev->content;
 		*stack = (*stack)->prev;
 	}
 	(*stack)->content = old_last;
-	//update_index(*stack);
 }
-

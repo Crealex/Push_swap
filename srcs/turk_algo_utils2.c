@@ -6,16 +6,16 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:23:16 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/27 13:38:31 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:18:09 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int cost_choice(t_stack *stack, int target)
+int	cost_choice(t_stack *stack, int target)
 {
-	int count;
-	int len;
+	int	count;
+	int	len;
 
 	len = len_stack(stack);
 	count = count_rot(stack, target);
@@ -25,11 +25,11 @@ int cost_choice(t_stack *stack, int target)
 		return (count);
 }
 
-t_stack		*shadow_goto_biggest(t_stack *stack)
+t_stack	*shadow_goto_biggest(t_stack *stack)
 {
 	int	biggest_temp;
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	stack = goto_head(stack);
 	biggest_temp = stack->content;
@@ -48,10 +48,11 @@ t_stack		*shadow_goto_biggest(t_stack *stack)
 	return (stack);
 }
 
-int		show_smallest(t_stack *stack)
+int	show_smallest(t_stack *stack)
 {
 	int	smallest;
-	int i;
+	int	i;
+
 	stack = goto_head(stack);
 	smallest = stack->content;
 	i = 0;

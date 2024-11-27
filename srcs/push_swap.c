@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 13:37:56 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:46:13 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	stack_a = parsing(argc, argv);
 	if (!stack_a)
 	{
-		ft_putendl_fd(RED"Erreur, argument(s) invalide(s)\n"END, 2);
+		ft_putendl_fd(RED"Error"END, 2);
 		return (1);
 	}
 	if (len_stack(stack_a) == 2)

@@ -6,17 +6,17 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:27:50 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 13:38:28 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:17:25 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		show_biggest(t_stack *stack)
+int	show_biggest(t_stack *stack)
 {
-	int	biggest_temp;
-	int i;
-	t_stack *temp;
+	int		biggest_temp;
+	int		i;
+	t_stack	*temp;
 
 	temp = copy_stack_content(stack);
 	temp = goto_head(temp);
@@ -36,13 +36,13 @@ int		show_biggest(t_stack *stack)
 t_stack	*shadow_rotate(t_stack *stack)
 {
 	int		num;
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!stack)
 		return (NULL);
 	temp = stack;
 	num = (temp)->content;
-	while((temp)->next)
+	while ((temp)->next)
 	{
 		(temp) = (temp)->next;
 		(temp)->prev->content = (temp)->content;
@@ -54,8 +54,8 @@ t_stack	*shadow_rotate(t_stack *stack)
 
 t_stack	*shadow_reverse_rotate(t_stack *stack)
 {
-	int old_last;
-	t_stack *temp;
+	int		old_last;
+	t_stack	*temp;
 
 	if (!stack)
 		return (NULL);
@@ -63,7 +63,7 @@ t_stack	*shadow_reverse_rotate(t_stack *stack)
 	while ((temp)->next)
 		temp = temp->next;
 	old_last = (temp)->content;
-	while((temp)->prev)
+	while ((temp)->prev)
 	{
 		(temp)->content = (temp)->prev->content;
 		temp = (temp)->prev;
@@ -72,7 +72,7 @@ t_stack	*shadow_reverse_rotate(t_stack *stack)
 	return (temp);
 }
 
-int count_rot(t_stack *stack, int target)
+int	count_rot(t_stack *stack, int target)
 {
 	t_stack	*temp;
 	int		count;
@@ -84,14 +84,14 @@ int count_rot(t_stack *stack, int target)
 	while (temp)
 	{
 		if (temp->content == target)
-			return count;
+			return (count);
 		count++;
 		temp = temp->next;
 	}
-return (0);
+	return (0);
 }
 
-int count_rev_rot(t_stack *stack, int target)
+int	count_rev_rot(t_stack *stack, int target)
 {
 	t_stack	*temp;
 	int		size;

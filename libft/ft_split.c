@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 15:34:06 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/09 14:25:19 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:28:44 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (!alloc_words(res, s, c))
 	{
-			ft_free_split(res, word_count);
-			return (NULL);
+		ft_free_split(res, word_count);
+		return (NULL);
 	}
 	if (word_count > 0)
 		fill_words(res, s, c);

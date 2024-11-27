@@ -6,13 +6,13 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 18:52:59 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/27 13:38:12 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:14:40 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	move_stack(t_stack **stack, int target,int choice, char c)
+void	move_stack(t_stack **stack, int target, int choice, char c)
 {
 	if (choice == -1)
 	{
@@ -34,13 +34,14 @@ void	move_stack(t_stack **stack, int target,int choice, char c)
 	}
 }
 
-void	double_move_stack(t_stack **stack_a, t_stack **stack_b, t_target *choice)
+void	double_move_stack(t_stack **stack_a, t_stack **stack_b, t_target *ch)
 {
-	if (choice->move_a == -1)
+	if (ch->move_a == -1)
 	{
 		while (*stack_a && *stack_b)
 		{
-			if ((*stack_a)->content == choice->target_a || (*stack_b)->content == choice->target_b)
+			if ((*stack_a)->content == ch->target_a
+				|| (*stack_b)->content == ch->target_b)
 				return ;
 			double_reverse_rotate(stack_a, stack_b);
 		}
@@ -49,7 +50,8 @@ void	double_move_stack(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 	{
 		while (*stack_a && *stack_b)
 		{
-			if ((*stack_a)->content == choice->target_a || (*stack_b)->content == choice->target_b)
+			if ((*stack_a)->content == ch->target_a
+				|| (*stack_b)->content == ch->target_b)
 				return ;
 			double_rotate(stack_a, stack_b);
 		}
@@ -71,7 +73,6 @@ void	exec_choice(t_stack **stack_a, t_stack **stack_b, t_target *choice)
 	if ((*stack_b)->content != choice->target_b)
 		move_stack(stack_b, choice->target_b, choice->move_b, 'b');
 	free(choice);
-	//ft_printf("smallest : %d\n", is_smallest(*stack_b, (*stack_a)->content));
 	if (is_smallest(*stack_b, (*stack_a)->content))
 	{
 		push_b(stack_a, stack_b);

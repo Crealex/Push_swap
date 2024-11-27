@@ -6,21 +6,19 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 13:38:04 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:11:43 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-
-int find_target(int current, t_stack *stack)
+int	find_target(int current, t_stack *stack)
 {
-	t_stack *temp;
-	t_stack *first;
+	t_stack	*temp;
+	t_stack	*first;
 
 	if (!stack)
 		return (0);
-
 	temp = stack;
 	first = stack;
 	while (temp->next)
