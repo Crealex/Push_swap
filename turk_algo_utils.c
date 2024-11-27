@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:27:50 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/26 22:14:31 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:30:03 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		show_biggest(t_stack *stack)
 		temp = shadow_rotate(temp);
 		i++;
 	}
+	free_stack_copy(temp);
 	return (biggest_temp);
 }
 
@@ -71,44 +72,44 @@ t_stack	*shadow_reverse_rotate(t_stack *stack)
 	return (temp);
 }
 
-int		count_rot(t_stack *stack, int target)
+int count_rot(t_stack *stack, int target)
 {
-	int count;
-	t_stack *temp;
+	t_stack	*temp;
+	int		count;
 
+	if (!stack)
+		return (0);
+	temp = stack;
 	count = 0;
-	temp = copy_stack_content(stack);
 	while (temp)
 	{
 		if (temp->content == target)
-		{
-			free_stack_copy(temp);
-			return (count);
-		}
-		temp = shadow_rotate(temp);
+			return count;
 		count++;
+		temp = temp->next;
 	}
-	free_stack_copy(temp);
-	return (0);
+return (0);
 }
 
-int		count_rev_rot(t_stack *stack, int  target)
+int count_rev_rot(t_stack *stack, int target)
 {
-	int count;
-	t_stack *temp;
+	t_stack	*temp;
+	int		size;
+	int		target_pos;
 
-	count = 0;
-	temp = copy_stack_content(stack);
+	if (!stack)
+		return (0);
+	size = 0;
+	target_pos = 0;
+	temp = stack;
 	while (temp)
 	{
 		if (temp->content == target)
-		{
-			free_stack_copy(temp);
-			return (count);
-		}
-		temp = shadow_reverse_rotate(temp);
-		count++;
+			target_pos = size;
+		size++;
+		temp = temp->next;
 	}
-	free_stack_copy(temp);
+	if (target_pos > 0)
+		return (size - target_pos);
 	return (0);
 }

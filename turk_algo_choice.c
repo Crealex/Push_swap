@@ -6,39 +6,31 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/26 22:04:21 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:22:10 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-int	find_target(int current, t_stack *stack)
+int find_target(int current, t_stack *stack)
 {
-	t_stack	*temp;
-	int		num;
+	t_stack *temp;
+	t_stack *first;
 
 	if (!stack)
 		return (0);
-	temp = copy_stack_content(stack);
+
+	temp = stack;
+	first = stack;
 	while (temp->next)
 	{
 		if ((temp->content > current && temp->next->content < current))
-		{
-			num = temp->next->content;
-			free_stack_copy(goto_head(temp));
-			return (num);
-		}
+			return (temp->next->content);
 		temp = temp->next;
 	}
-	temp = shadow_reverse_rotate(temp);
-	if (temp->content > current && temp->next->content < current)
-	{
-			num = temp->next->content;
-			free_stack_copy(goto_head(temp));
-			return (num);
-	}
-	free_stack_copy(goto_head(temp));
+	if (temp->content > current && first->content < current)
+		return (first->content);
 	return (show_biggest(stack));
 }
 
