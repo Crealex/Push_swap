@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:58:17 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/21 11:38:22 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:47 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int		len_stack(t_stack *stack)
 {

@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/26 16:45:36 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:01 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h> // Pour faire des tests
-# include "libft/libft.h"
+# include "../libft/libft.h"
 typedef struct s_stack
 {
 	int			content;

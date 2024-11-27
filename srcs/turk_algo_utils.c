@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:27:50 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 10:30:03 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:38:28 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int		show_biggest(t_stack *stack)
 {

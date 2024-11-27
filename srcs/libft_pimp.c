@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:50:57 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 11:39:01 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:26 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 
 t_stack	*ft_lstnew_pimp(int content)

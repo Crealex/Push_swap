@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:13:38 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/22 21:06:30 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:52 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /* void	update_index(t_stack *stack)
 {

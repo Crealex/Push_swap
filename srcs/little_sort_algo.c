@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:23:11 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/19 16:29:44 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:38:43 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	little_sort(t_stack **stack, char c)
 {

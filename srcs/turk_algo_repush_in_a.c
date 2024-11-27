@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_repush_in_a.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:10:16 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/24 19:10:17 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/27 13:38:24 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	push_in_a(t_stack **stack_a, t_stack **stack_b, int limit)
 {

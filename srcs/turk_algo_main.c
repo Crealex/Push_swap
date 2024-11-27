@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   turk_algo_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:40 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/22 20:51:34 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/11/27 13:38:18 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	push_in_b(t_stack **stack_a, t_stack **stack_b)
 {

@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:45:11 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/26 16:48:43 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:36 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	double_swap(t_stack **stack_a, t_stack **stack_b)
 {

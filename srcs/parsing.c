@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:16:58 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 15:10:11 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:31 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 
 int		duplicate_checker(t_stack *stack, int content)

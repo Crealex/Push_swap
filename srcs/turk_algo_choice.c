@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:31:29 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/27 10:22:10 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:38:04 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 
 int find_target(int current, t_stack *stack)

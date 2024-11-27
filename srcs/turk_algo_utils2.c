@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:23:16 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/27 10:30:46 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:38:31 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int cost_choice(t_stack *stack, int target)
 {

@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:06:24 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/15 15:10:03 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:20 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int		int_max_min(char *str)
 {

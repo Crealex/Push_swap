@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 22:07:05 by alexandre         #+#    #+#             */
-/*   Updated: 2024/11/21 11:23:03 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:42 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	swap(t_stack **stack, char c)
 {

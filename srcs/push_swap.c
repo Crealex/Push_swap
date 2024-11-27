@@ -6,11 +6,11 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:25:47 by atomasi           #+#    #+#             */
-/*   Updated: 2024/11/26 15:34:18 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/11/27 13:37:56 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -27,18 +27,16 @@ int	main(int argc, char **argv)
 		ft_putendl_fd(RED"Erreur, argument(s) invalide(s)\n"END, 2);
 		return (1);
 	}
-	//ft_printf("--------DEBUT-------");
-	//read_stack(stack_a, stack_b);
-	if (len_stack(stack_a) == 3)
+	if (len_stack(stack_a) == 2)
+	{
+		if ((stack_a)->content > (stack_a)->next->content)
+			swap(&stack_a, 'a');
+	}
+	else if (len_stack(stack_a) == 3)
 		little_sort(&stack_a, 'a');
 	else
 		turk_sort(&stack_a, &stack_b);
-	//bignum_algo(&stack_a, &stack_b);
-	//ft_printf(YELLOW"-----FINAL-----\n"END);
-	//read_stack(stack_a, stack_b);
 	if (stack_a)
 		free_stack_copy(stack_a);
-	if (stack_b)
-		free_stack_copy(stack_b);
 	return (0);
 }
